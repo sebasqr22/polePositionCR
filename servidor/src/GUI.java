@@ -24,7 +24,9 @@ public class GUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
 
     /** variables globales */
-    private int puerto = 8080;
+    private int puerto = 25557;
+
+    public static SocketServidor server;
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -244,7 +246,10 @@ public class GUI extends javax.swing.JFrame {
             public void run() {
                 new GUI().setVisible(true);
             }
-        }); 
+        });
+
+        server = new SocketServidor();
+
     }
     /** definicion de funciones propias */
     private static void agregarJugador(String nombre, int vidas){
