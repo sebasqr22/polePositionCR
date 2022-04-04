@@ -1,0 +1,9 @@
+# ninja log v5
+54	75	1649094875382441663	Clientee	6a2af23adcdb605a
+1	46	1649089525616712187	CMakeFiles/Clientee.dir/Socket.c.o	317f53ca5c65dd53
+0	53	1649087025611557918	CMakeFiles/Clientee.dir/Socket_Cliente.c.o	b8164c1a76ecbbf8
+1	54	1649094875362441989	CMakeFiles/Clientee.dir/Cliente.c.o	3b1e791705fdcbbf
+1	52	1649097230792175832	CMakeFiles/Clientee.dir/Socket_Cliente.c.o	27722b3f08ee2d21
+1	55	1649097230792175832	CMakeFiles/Clientee.dir/Socket.c.o	bf8e5288a83e6d42
+1	66	1649097230804176386	CMakeFiles/Clientee.dir/Cliente.c.o	280ef4008e832096
+66	90	1649097230828177495	Clientee	6a2af23adcdb605a

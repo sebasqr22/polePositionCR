@@ -1,0 +1,3 @@
+/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug/CMakeFiles/Clientee.dir

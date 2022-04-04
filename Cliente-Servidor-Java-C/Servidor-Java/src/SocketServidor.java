@@ -1,10 +1,3 @@
-package servidoresAlternativos;/*
- * Javier Abellán. 9 Dic 2003
- *
- * SocketServidor.java
- * Ejemplo de un socket servidor en java que se conecta con un cliente C.
- */
-
 import java.net.*;
 import java.io.*;
 
@@ -30,7 +23,7 @@ public class SocketServidor
         {
             // Se crea un socket servidor atendiendo a un determinado puerto.
             // Por ejemplo, el 25557.
-            ServerSocket socket = new ServerSocket (25557);
+            ServerSocket socket = new ServerSocket (8080);
 
             // Se acepata una conexión con un cliente. Esta llamada se queda
             // bloqueada hasta que se arranque el cliente.
@@ -43,7 +36,7 @@ public class SocketServidor
             // enviar los datos (como en este caso).
             // setSoLinger() a true hace que el cierre del socket espere a que
             // el cliente lea los datos, hasta un máximo de 10 segundos de espera.
-            // Si no ponemos esto, el socket se cierra inmediatamente y si el
+            // Si no ponemos esto, el socket se cierra inmediatamente y si el 
             // cliente no ha tenido tiempo de leerlos, los datos se pierden.
             cliente.setSoLinger (true, 10);
 
@@ -67,8 +60,20 @@ public class SocketServidor
             // Se crea un dato a leer y se le dice que se rellene con el flujo de
             // entrada de datos.
             DatoSocket aux = new DatoSocket("");
-            aux.readObject (bufferEntrada);
-            System.out.println ("Servidor java: Recibido " + aux.toString());
+            aux.readObject (bufferEntrada);  // usar aux.toString para hacer un nuevo array de caracteres que contenga lo de aux pero sin los primeros 4 caracteres
+
+            String texto = aux.toString();
+            int cont = 0;
+            // Se obtiene el mensaje importante.
+            StringBuilder mensaje = new StringBuilder();
+            cont = 0;
+            for (int i=0; i < texto.length(); i++){
+                if (cont >= 4){
+                    mensaje.append(texto.charAt(i));
+                }
+                cont ++;
+            }
+            System.out.println ("Servidor java: Recibido " + aux.c + " -- " + mensaje);
 
             // Se cierra el socket con el cliente.
             // La llamada anterior a setSoLinger() hará
