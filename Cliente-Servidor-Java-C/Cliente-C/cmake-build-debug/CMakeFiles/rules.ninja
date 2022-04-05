@@ -42,7 +42,7 @@ rule C_EXECUTABLE_LINKER__Clientee_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/user/Escritorio/Proyect3/clienteJavaC/Cliente -B/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug
+  command = /home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C" -B"/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
   description = Re-running CMake...
   generator = 1
 

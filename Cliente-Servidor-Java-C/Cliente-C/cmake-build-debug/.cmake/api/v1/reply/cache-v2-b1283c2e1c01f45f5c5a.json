@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
 		},
 		{
 			"name" : "Clientee_IS_TOP_LEVEL",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 		}
 	],
 	"kind" : "cache",

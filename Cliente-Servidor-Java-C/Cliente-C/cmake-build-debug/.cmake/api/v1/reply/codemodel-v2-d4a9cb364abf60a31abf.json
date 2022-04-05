@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente/cmake-build-debug",
-		"source" : "/home/user/Escritorio/Proyect3/clienteJavaC/Cliente"
+		"build" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug",
+		"source" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 	},
 	"version" : 
 	{

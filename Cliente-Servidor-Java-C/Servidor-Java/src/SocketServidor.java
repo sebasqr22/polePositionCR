@@ -9,13 +9,12 @@ public class SocketServidor
 {
     public static void main (String [] args)
     {
-        // Se instancia la clase principal para que haga todo lo que tiene que
-        // hacer el ejemplo
+        // Se llama al metodo SocketSevidor para crear el socket y realizar la conexion
         new SocketServidor();
     }
 
     /**
-     * Constructor por defecto. Hace todo lo que hace el ejemplo.
+     * Constructor.
      */
     public SocketServidor()
     {
@@ -31,61 +30,56 @@ public class SocketServidor
             Socket cliente = socket.accept();
             System.out.println ("Conectado con cliente de " + cliente.getInetAddress());
 
-            // Se hace que el cierre del socket sea "gracioso". Esta llamada sólo
-            // es necesaria si cerramos el socket inmediatamente después de
-            // enviar los datos (como en este caso).
-            // setSoLinger() a true hace que el cierre del socket espere a que
-            // el cliente lea los datos, hasta un máximo de 10 segundos de espera.
-            // Si no ponemos esto, el socket se cierra inmediatamente y si el 
-            // cliente no ha tenido tiempo de leerlos, los datos se pierden.
+            // se espera a que el cliente lea los datos, hasta un máximo de 10 segundos de espera antes de cerrar el socket.
             cliente.setSoLinger (true, 10);
 
-            // Se prepara un dato para enviar.
-            DatoSocket dato = new DatoSocket("Hola");
 
-            // Se prepara un flujo de salida de datos, es decir, la clase encargada
-            // de escribir datos en el socket.
-            DataOutputStream bufferSalida =
-                    new DataOutputStream (cliente.getOutputStream());
+            /* Inicio del loop *//////////////////////////////////////////////////////////////////////////////////
+            while (true){
 
-            // Se envía el dato.
-            dato.writeObject (bufferSalida);
-            System.out.println ("Servidor Java: Enviado " + dato.toString());
+                /**
+                 * Cambiar dato por los mensajes necesarios para la ejecucion del juego (se puede usar json)
+                 */
+                // Se prepara un dato para enviar.
+                DatoSocket dato = new DatoSocket("Hola");
 
-            // Se prepara el flujo de entrada de datos, es decir, la clase encargada
-            // de leer datos del socket.
-            DataInputStream bufferEntrada =
-                    new DataInputStream (cliente.getInputStream());
+                // Se preparan los datos para ser enviados
+                DataOutputStream bufferSalida = new DataOutputStream (cliente.getOutputStream());
 
-            // Se crea un dato a leer y se le dice que se rellene con el flujo de
-            // entrada de datos.
-            DatoSocket aux = new DatoSocket("");
-            aux.readObject (bufferEntrada);  // usar aux.toString para hacer un nuevo array de caracteres que contenga lo de aux pero sin los primeros 4 caracteres
+                // Se envía el dato.
+                dato.writeObject (bufferSalida);
+                System.out.println ("Mensaje enviado: " + dato.toString());
 
-            String texto = aux.toString();
-            int cont = 0;
-            // Se obtiene el mensaje importante.
-            StringBuilder mensaje = new StringBuilder();
-            cont = 0;
-            for (int i=0; i < texto.length(); i++){
-                if (cont >= 4){
-                    mensaje.append(texto.charAt(i));
+                // Se preparan los datos para ser leidos
+                DataInputStream bufferEntrada = new DataInputStream (cliente.getInputStream());
+                DatoSocket aux = new DatoSocket("");
+                aux.readObject (bufferEntrada);
+
+                // Se obtiene el contenido importante del mensaje y se guarda en la variable mensaje.
+                String texto = aux.toString();
+                String mensaje = "";
+                int cont = 0;
+                for (int i=0; i < texto.length(); i++){
+                    if (cont >= 4){
+                        mensaje = mensaje + texto.charAt(i);
+                    }
+                    cont ++;
                 }
-                cont ++;
-            }
-            System.out.println ("Servidor java: Recibido " + aux.c + " -- " + mensaje);
+                System.out.println ("Mensaje Recibido: " + mensaje);
 
-            // Se cierra el socket con el cliente.
-            // La llamada anterior a setSoLinger() hará
-            // que estos cierres esperen a que el cliente retire los datos.
+                if (mensaje.equals("salir")){
+                    break;
+                }
+            }
+
+
+            // Se cierra el socket con el cliente. // setSoLinger() espera a que el cliente retire los datos.
             cliente.close();
 
-            // Se cierra el socket encargado de aceptar clientes. Ya no
-            // queremos más.
+            // Se cierra el socket encargado de aceptar clientes.
             socket.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e){
             e.printStackTrace();
         }
     }
