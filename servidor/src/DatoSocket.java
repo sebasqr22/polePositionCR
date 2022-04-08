@@ -1,12 +1,3 @@
-
-
-/*
- * Javier Abellán. 9 Dic 2003
- *
- * DatoSocket.java
- * Dato que se va a enviar entre servidores y clientes java y c.
- */
-
 import java.io.*;
 
 /**
@@ -39,7 +30,7 @@ public class DatoSocket implements Serializable
     public String toString ()
     {
         String resultado;
-        resultado = Integer.toString(c) + " -- " + d;
+        resultado = d;
         return resultado;
     }
 
@@ -71,7 +62,7 @@ public class DatoSocket implements Serializable
     {
         // Se lee la longitud de la cadena y se le resta 1 para eliminar el \0 que
         // nos envía C.
-        c = in.readInt() - 1;
+        c = in.readInt() + 3;
 
         // Array de bytes auxiliar para la lectura de la cadena.
         byte [] aux = null;
