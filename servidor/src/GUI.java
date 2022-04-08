@@ -7,7 +7,7 @@
  *
  * @author sebas
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame implements Observador {
 
     /**
      * Creates new form GUI
@@ -26,7 +26,12 @@ public class GUI extends javax.swing.JFrame {
     /** variables globales */
     private int puerto = 25557;
 
-    public static SocketServidor server;
+    //public static SocketCliente server;
+
+    @Override
+    public void update() {
+        System.out.println("Se hace un update.....");
+    }
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -187,13 +192,14 @@ public class GUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+
+    //public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+       /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -209,18 +215,19 @@ public class GUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold>     */
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+          //  public void run() {
+            //    new GUI().setVisible(true);
+            //}
+        //});
 
-        server = new SocketServidor();
+        //server = new SocketCliente();
+        //server.enlazarObjetos(GUI);
 
-    }
+    //}
     /** definicion de funciones propias */
     private static void agregarJugador(String nombre, int vidas){
         String completo = nombre + " --- " + String.valueOf(vidas) + "\n";
@@ -241,5 +248,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel xText;
     private javax.swing.JTextField yLabel;
     private javax.swing.JLabel yText;
+
     // End of variables declaration//GEN-END:variables
 }
