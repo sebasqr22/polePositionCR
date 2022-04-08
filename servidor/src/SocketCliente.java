@@ -21,7 +21,7 @@ public class SocketCliente
         try
         {
             /* Se crea el socket cliente */
-            Socket socket = new Socket ("localhost", 25557);
+            Socket socket = new Socket ("localhost", 8080);
             System.out.println ("conectado");
 
             /* Se hace que el cierre espere a la recogida de todos los datos desde

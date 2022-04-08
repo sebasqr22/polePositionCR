@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/DatoSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/DatoSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/SocketServidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/SocketServidor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/DatoSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/DatoSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/SocketServidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketServidor.java" afterDir="false" />
-    </list>
+    <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +61,7 @@
       <workItem from="1648776315605" duration="1941000" />
       <workItem from="1649340799806" duration="46000" />
       <workItem from="1649342938960" duration="1826000" />
-      <workItem from="1649441754302" duration="1080000" />
+      <workItem from="1649441754302" duration="1420000" />
     </task>
     <servers />
   </component>
