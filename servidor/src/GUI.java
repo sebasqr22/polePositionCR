@@ -44,6 +44,16 @@ public class GUI extends javax.swing.JFrame implements Observador {
         return lista;
     }
 
+    private void enviar(String mensaje){
+        try{
+            server.enviar(mensaje);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     private void asignarJugador(String nombre, String vidas){
         if(jugador1.getInicializado()){
             jugador1.setInfoBasica(nombre, vidas);
@@ -66,6 +76,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
             jugadoresArea.append(nombre + "---" + vidas);
         }
         else{
+            enviar("NO");
             System.out.printf("NO hay espacios para jugadores disponibles...");
         }
     }
