@@ -47,15 +47,23 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private void asignarJugador(String nombre, String vidas){
         if(jugador1.getInicializado()){
             jugador1.setInfoBasica(nombre, vidas);
+            jugador1.setInicializado(true);
+            jugadoresArea.append(nombre + "---" + vidas);
         }
         else if(jugador2.getInicializado()){
             jugador2.setInfoBasica(nombre, vidas);
+            jugador2.setInicializado(true);
+            jugadoresArea.append(nombre + "---" + vidas);
         }
         else if(jugador3.getInicializado()){
             jugador3.setInfoBasica(nombre, vidas);
+            jugador3.setInicializado(true);
+            jugadoresArea.append(nombre + "---" + vidas);
         }
         else if(jugador4.getInicializado()){
             jugador4.setInfoBasica(nombre, vidas);
+            jugador4.setInicializado(true);
+            jugadoresArea.append(nombre + "---" + vidas);
         }
         else{
             System.out.printf("NO hay espacios para jugadores disponibles...");
