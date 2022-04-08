@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="" />
+    <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +64,7 @@
       <workItem from="1648776315605" duration="1941000" />
       <workItem from="1649340799806" duration="46000" />
       <workItem from="1649342938960" duration="1826000" />
-      <workItem from="1649441754302" duration="1420000" />
+      <workItem from="1649441754302" duration="2299000" />
     </task>
     <servers />
   </component>

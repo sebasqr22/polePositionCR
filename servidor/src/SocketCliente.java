@@ -7,11 +7,13 @@ import java.io.*;
  */
 public class SocketCliente
 {
-    /** Programa principal, crea el socket cliente */
+    private String info;
+    private String envio;
+    /** Programa principal, crea el socket cliente
     public static void main (String [] args)
     {
         new SocketCliente();
-    }
+    }*/
 
     /**
      * Crea el socket cliente y lee los datos
@@ -36,14 +38,15 @@ public class SocketCliente
              * en pantalla */
             DatoSocket dato = new DatoSocket("");
             dato.readObject(bufferEntrada);
-            System.out.println ("Cliente Java: Recibido " + dato.toString());
+            info = dato.toString();
+            System.out.println ("Cliente Java: Recibido " + info);
 
             /* Se obtiene un flujo de envio de datos para enviar un dato al servidor */
             DataOutputStream bufferSalida =
                     new DataOutputStream (socket.getOutputStream());
 
             /* Se crea el dato y se escribe en el flujo de salida */
-            DatoSocket aux = new DatoSocket ("Adios");
+            DatoSocket aux = new DatoSocket (envio);
             aux.writeObject (bufferSalida);
 
             System.out.println ("Cliente Java: Enviado " + aux.toString());
@@ -56,5 +59,15 @@ public class SocketCliente
         {
             e.printStackTrace();
         }
+    }
+
+    public String getInfo() {
+        return this.info;
+    }
+    public void setEnvio(String envio){
+        this.envio = envio;
+    }
+    public String getEnvio(){
+        return this.envio;
     }
 }
