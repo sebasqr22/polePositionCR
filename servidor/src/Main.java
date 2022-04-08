@@ -1,6 +1,6 @@
 public class Main {
     private static GUI pantalla = new GUI();
-    private static SocketCliente servidor = new SocketCliente();
+    private static SocketCliente servidor;
 
 
     public static void main(String args[]){
@@ -8,6 +8,7 @@ public class Main {
             public void run() {pantalla.setVisible(true);
             }
         });
+        servidor = new SocketCliente();
         pantalla.setServer(servidor);
         servidor.enlazarObjetos(pantalla);
     }
