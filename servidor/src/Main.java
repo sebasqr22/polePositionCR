@@ -8,6 +8,7 @@ public class Main {
             public void run() {pantalla.setVisible(true);
             }
         });
+        pantalla.setServer(servidor);
         servidor.enlazarObjetos(pantalla);
     }
 }

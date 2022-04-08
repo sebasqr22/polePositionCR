@@ -25,12 +25,53 @@ public class GUI extends javax.swing.JFrame implements Observador {
 
     /** variables globales */
     private int puerto = 25557;
+    private String llegada;
+    private Jugador jugador1 = new Jugador();
+    private Jugador jugador2 = new Jugador();
+    private Jugador jugador3 = new Jugador();
+    private Jugador jugador4 = new Jugador();
 
-    //public static SocketCliente server;
+
+    public static SocketCliente server;
+
+    public static void setServer(SocketCliente server) {
+        GUI.server = server;
+    }
+
+    private String[] quitarPartes(String total){
+        total.charAt(0);
+        String[] lista = total.split("-");
+        return lista;
+    }
+
+    private void asignarJugador(String nombre, String vidas){
+        if(jugador1.getInicializado()){
+            jugador1.setInfoBasica(nombre, vidas);
+        }
+        else if(jugador2.getInicializado()){
+            jugador2.setInfoBasica(nombre, vidas);
+        }
+        else if(jugador3.getInicializado()){
+            jugador3.setInfoBasica(nombre, vidas);
+        }
+        else if(jugador4.getInicializado()){
+            jugador4.setInfoBasica(nombre, vidas);
+        }
+        else{
+            System.out.printf("NO hay espacios para jugadores disponibles...");
+        }
+    }
 
     @Override
     public void update() {
         System.out.println("Se hace un update.....");
+        llegada = server.getInfo();
+
+        if(llegada.contains("1")){ //1-Sebas-3
+            String[] lista = quitarPartes(llegada);
+            asignarJugador(lista[0], lista[1]);
+        }
+
     }
 
 

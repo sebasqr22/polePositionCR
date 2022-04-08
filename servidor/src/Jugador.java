@@ -3,15 +3,22 @@ public class Jugador {
     private int cantidadVidas;
     private String ip;
     private int distanciaRecorrida;
+    private boolean inicializado = false;
 
-    public Jugador(String name, String ip) { /* contrstuctor de la clase*/
-        this.name = name;
-        this.ip = ip;
-        this.cantidadVidas = 3;
-        this.distanciaRecorrida = 0;
+    public boolean getInicializado() {
+        return inicializado;
     }
 
+    public void setInicializado(boolean inicializado) {
+        this.inicializado = inicializado;
+    }
 
+    public Jugador(){}
+
+    public void setInfoBasica(String name, String vidas){
+        this.name = name;
+        this.cantidadVidas = Integer.parseInt(vidas);
+    }
 
     public String getName() {
         return name;
