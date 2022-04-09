@@ -71,6 +71,7 @@ public class SocketCliente implements SujetoObservable {
                     cont ++;
                 }
                 llegada = mensaje;
+                notificar();
                 System.out.println ("Mensaje Recibido: " + mensaje);
 
                 if (mensaje.equals("salir")){
