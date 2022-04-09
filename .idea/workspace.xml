@@ -4,7 +4,7 @@
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +78,7 @@
       <workItem from="1649449679209" duration="8803000" />
       <workItem from="1649459737814" duration="3678000" />
       <workItem from="1649472949484" duration="5330000" />
+      <workItem from="1649518803318" duration="2271000" />
     </task>
     <servers />
   </component>

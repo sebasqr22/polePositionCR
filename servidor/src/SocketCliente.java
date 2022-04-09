@@ -13,7 +13,7 @@ public class SocketCliente implements SujetoObservable {
     public void enlazarObjetos(Observador o1){observadores.add(o1);};
     private boolean ejecutando = true;
 
-    Socket conexion;
+    Socket cliente;
 
 
     /** Programa principal, crea el socket cliente
@@ -29,6 +29,9 @@ public class SocketCliente implements SujetoObservable {
     {
         observadores = new ArrayList<Observador>();
 
+
+    }
+    public void iniciar(){
         try
         {
             // Se crea un socket servidor atendiendo a un determinado puerto.
@@ -38,7 +41,7 @@ public class SocketCliente implements SujetoObservable {
             // Se acepata una conexión con un cliente. Esta llamada se queda
             // bloqueada hasta que se arranque el cliente.
             System.out.println ("Esperando cliente");
-            Socket cliente = socket.accept();
+            cliente = socket.accept();
             System.out.println ("Conectado con cliente de " + cliente.getInetAddress());
 
             // se espera a que el cliente lea los datos, hasta un máximo de 10 segundos de espera antes de cerrar el socket.
@@ -87,7 +90,7 @@ public class SocketCliente implements SujetoObservable {
         }
     }
     public void enviar(String salida) throws IOException {
-        DataOutputStream bufferSalida = new DataOutputStream (conexion.getOutputStream());
+        DataOutputStream bufferSalida = new DataOutputStream (cliente.getOutputStream());
 
         /* Se crea el dato y se escribe en el flujo de salida */
         DatoSocket aux = new DatoSocket (salida);

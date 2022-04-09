@@ -36,11 +36,13 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private ArregloVidas listaVidas = new ArregloVidas(1);
 
 
-    public static SocketCliente server;
+    public static SocketCliente server = new SocketCliente();
 
     public static void setServer(SocketCliente server) {
         GUI.server = server;
+        server.iniciar();
     }
+
 
     private String[] quitarPartes(String total){
         total.charAt(0);
@@ -85,7 +87,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
         }
     }
 
-    @Override
+    @Override //aca llega la notifacion del observador y se comienza a depurar el mensaje
     public void update() {
         System.out.println("Se hace un update.....");
         llegada = server.getInfo();
