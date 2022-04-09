@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author sebas
@@ -30,6 +32,8 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private Jugador jugador2 = new Jugador();
     private Jugador jugador3 = new Jugador();
     private Jugador jugador4 = new Jugador();
+    private ArregloTurbos listaTurbos = new ArregloTurbos(1);
+    private ArregloVidas listaVidas = new ArregloVidas(1);
 
 
     public static SocketCliente server;
@@ -245,8 +249,33 @@ public class GUI extends javax.swing.JFrame implements Observador {
         // TODO add your handling code here:
     }//GEN-LAST:event_xLabelActionPerformed
 
-    private void enviarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarButtonActionPerformed
+    // ACCION AL TOCAR BOTON DE ENVIAR
+    private void enviarButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_enviarButtonActionPerformed
         // TODO add your handling code here:
+        int tipoNum = tipoCombo.getSelectedIndex() + 1;
+        String corX = xLabel.getText();
+        String corY = yLabel.getText();
+
+        xLabel.setText("");
+        yLabel.setText("");
+
+        String mensaje = "";
+        if(tipoNum != 4){
+            //mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
+            if(tipoNum == 2){
+                mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
+            }
+            else{
+                Turbos turbo = new Turbos(corX, corY);
+                listaTurbos.insertar(turbo);
+            }
+        }
+        else{
+            Vidas vida = new Vidas(corX, corY);
+            listaVidas.insertar(vida);
+            mensaje = String.valueOf(tipoNum) + "-0-0";
+        }
+        enviar(mensaje);
     }//GEN-LAST:event_enviarButtonActionPerformed
 
     /**

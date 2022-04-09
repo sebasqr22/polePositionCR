@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/GUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/GUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/GUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/GUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/GUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/GUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/GUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/Jugador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/Jugador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polePositionCR/SocketCliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polePositionCR/SocketCliente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/Jugador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +76,8 @@
       <workItem from="1649342938960" duration="1826000" />
       <workItem from="1649441754302" duration="2299000" />
       <workItem from="1649449679209" duration="8803000" />
-      <workItem from="1649459737814" duration="1346000" />
+      <workItem from="1649459737814" duration="3678000" />
+      <workItem from="1649472949484" duration="5330000" />
     </task>
     <servers />
   </component>

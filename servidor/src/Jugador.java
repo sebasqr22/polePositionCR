@@ -1,7 +1,7 @@
 public class Jugador {
     private String name;
     private int cantidadVidas;
-    private String ip;
+    private String puerto;
     private int distanciaRecorrida;
     private boolean inicializado = false;
 
@@ -36,12 +36,12 @@ public class Jugador {
         this.cantidadVidas = cantidadVidas;
     }
 
-    public String getIp() {
-        return ip;
+    public String getPuerto() {
+        return puerto;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setPuerto(String ip) {
+        this.puerto = ip;
     }
 
     public int getDistanciaRecorrida() {
