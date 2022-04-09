@@ -4,6 +4,7 @@
  */
 
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 /**
  *
@@ -254,30 +255,32 @@ public class GUI extends javax.swing.JFrame implements Observador {
     // ACCION AL TOCAR BOTON DE ENVIAR
     private void enviarButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_enviarButtonActionPerformed
         // TODO add your handling code here:
-        int tipoNum = tipoCombo.getSelectedIndex() + 1;
+        int tipoNum = tipoCombo.getSelectedIndex() + 2;
         String corX = xLabel.getText();
         String corY = yLabel.getText();
 
         xLabel.setText("");
         yLabel.setText("");
+        if(!Objects.equals(corX, "") & !Objects.equals(corY, "")) {
+            String mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
 
-        String mensaje = "";
-        if(tipoNum != 4){
-            //mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
-            if(tipoNum == 2){
-                mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
-            }
-            else{
+            if (tipoNum == 2) {
+                System.out.println("HUECO\n");
+            } else if (tipoNum == 3) {
+                Vidas vida = new Vidas(corX, corY);
+                listaVidas.insertar(vida);
+            } else {
                 Turbos turbo = new Turbos(corX, corY);
                 listaTurbos.insertar(turbo);
             }
+            System.out.println("MENSAJE A ENVIAR: " + mensaje + "\n");
+            enviar(mensaje);
         }
         else{
-            Vidas vida = new Vidas(corX, corY);
-            listaVidas.insertar(vida);
-            mensaje = String.valueOf(tipoNum) + "-0-0";
+            System.out.println("ERROR, PARTES VACIAS\n");
         }
-        enviar(mensaje);
+
+
     }//GEN-LAST:event_enviarButtonActionPerformed
 
     /**
