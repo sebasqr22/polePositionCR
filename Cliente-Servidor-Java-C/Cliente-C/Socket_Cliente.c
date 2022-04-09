@@ -21,7 +21,7 @@ int Abre_Conexion_Inet ()
 
     Direccion.sin_family = AF_INET;
     Direccion.sin_addr.s_addr = inet_addr("127.0.0.1"); // ip del servidor
-    Direccion.sin_port = ntohs (8080);
+    Direccion.sin_port = ntohs (1025);
     memset(&Direccion.sin_zero, 0, sizeof(Direccion.sin_zero)); // Clean structure
 
 	if (connect (Descriptor,(struct sockaddr *)&Direccion,

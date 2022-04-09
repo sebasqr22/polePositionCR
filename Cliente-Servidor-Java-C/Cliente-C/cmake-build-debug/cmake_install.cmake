@@ -1,4 +1,4 @@
-# Install script for directory: /home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C
+# Install script for directory: /home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

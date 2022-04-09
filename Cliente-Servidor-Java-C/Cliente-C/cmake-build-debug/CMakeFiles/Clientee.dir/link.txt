@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Clientee.dir/Cliente.c.o CMakeFiles/Clientee.dir/Socket_Cliente.c.o CMakeFiles/Clientee.dir/Socket.c.o -o Clientee 

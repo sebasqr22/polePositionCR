@@ -46,11 +46,8 @@ void iniciarServidor(){
         strcpy(mensajeRecibido, Cadena);
         printf ("Mensaje recibido: %s\n", Cadena);
         strcpy(mensajeRecibido, "");
-        char mensaje[100];
-        printf("Ingrese el mensaje: ");
-        scanf("%s", mensaje);
-        printf( "\n");
-        enviarMensaje(mensaje);
+        enviarMensaje("1-sebas-3");
+
     }
     close (Socket_Con_Servidor);
 }
@@ -61,4 +58,5 @@ char *getMensaje(){
 
 int main(){
     iniciarServidor();
+
 }

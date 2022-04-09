@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug",
-		"source" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
+		"build" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug",
+		"source" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 	},
 	"version" : 
 	{
