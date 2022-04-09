@@ -3,12 +3,12 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "Socket_Cliente.h"
+#include "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c"
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <unistd.h>
 #include <string.h>
-#include "Socket.h"
+#include "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c"
 
 char mensajeRecibido[100] = "";
 int Socket_Con_Servidor;
@@ -46,10 +46,10 @@ void iniciarServidor(){
         strcpy(mensajeRecibido, Cadena);
         printf ("Mensaje recibido: %s\n", Cadena);
         strcpy(mensajeRecibido, "");
-        //enviarMensaje("1-sebas-3");
+        enviarMensaje("1-sebas-3");
 
     }
-    close (Socket_Con_Servidor);
+    //close (Socket_Con_Servidor);
 }
 
 char *getMensaje(){

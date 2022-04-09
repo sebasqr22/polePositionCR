@@ -6,10 +6,22 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include "comunicacion.c"
+#include <pthread.h>
+
+
+void *comenzarComunicacion(void *valor){
+    printf("Se inicia el segundo hilo.........");
+    iniciarServidor();
+    return NULL;
+}
 
 int main()
 {
     // Inicialización del juego
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
+
     al_init();
     al_init_primitives_addon();
     al_init_image_addon();
@@ -19,6 +31,8 @@ int main()
     // Se crea una ventana nueva
     ALLEGRO_DISPLAY *ventana = 0;
     ventana = al_create_display(1000, 600);
+
+    
 
     // Si no se puede inicializar, se lanza error y se cierra la aplicación
     if (!al_init()){
@@ -74,8 +88,12 @@ int main()
     long time2, eTime;
     double ellapsed_time;
 
+    pthread_join(hilo, NULL);
+    printf("A SU MEKA");
+
     // loop del juego // crear conexión con servidor antes de esto
     while(!done){
+        
         // Manejo del tiempo
         time2 = clock();
         eTime = time2- time1;
@@ -112,7 +130,7 @@ int main()
         float roadCurveDiff = (targetCurvature - curvatura)*(ellapsed_time + 0.05) * carSpeed; // elapsed
         curvatura = roadCurveDiff; 
 
-        printf("Curva: %f\n", carPos);
+        //printf("Curva: %f\n", carPos);
 
         roadCurv += (curvatura)* ellapsed_time * carSpeed;
 
