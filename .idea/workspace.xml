@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" afterDir="false" />
->>>>>>> Stashed changes
+      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

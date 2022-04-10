@@ -13,6 +13,7 @@
 // Variables globales
 int milesimas = 0, segundos = 0, multiploSeg = 1;
 float carPos = 0;
+int posicionH = 0, posicionT = 0, posicionV = 0;
 float dist = 0.0f;
 long time1;
 long time2, eTime;
@@ -148,6 +149,31 @@ int jugar(){
         Huecos.distH = getNumeroH();
         Turbos.distT = getNumeroT();
         Vidas.distV = getNumeroV();
+
+        // Se dibujan los huecos segun los mensajes del servidor
+        if (Huecos.distH > jugador.distancia && (Huecos.distH - jugador.distancia)<200){
+            al_draw_bitmap(newHueco, 500,250+posicionH,0);
+            posicionH+= 10;
+        }
+        if ((jugador.distancia - Huecos.distH) > 500){
+            posicionH = 0;
+        }
+        // Se dibujan los turbos segun los mensajes del servidor
+        if (Turbos.distT > jugador.distancia && (Turbos.distT - jugador.distancia)<200){
+            al_draw_bitmap(newHueco, 500,250+posicionT,0);
+            posicionT+= 10;
+        }
+        if ((jugador.distancia - Turbos.distT) > 500){
+            posicionT = 0;
+        }
+        // Se dibujan las vidas segun los mensajes del servidor
+        if (Vidas.distV > jugador.distancia && (Vidas.distV - jugador.distancia)<200){
+            al_draw_bitmap(newVida, 500,250+posicionV,0);
+            posicionV+= 10;
+        }
+        if ((jugador.distancia - Vidas.distV) > 500){
+            posicionV = 0;
+        }
 
         //Se asigna un punto cada 10 segundos jugados
         if (segundos == 10*multiploSeg){
@@ -310,7 +336,7 @@ int jugar(){
         // Se actualiza y se imprime el tiempo de juego
         milesimas ++;
         tiempoJuego();
-        char timeS[10] = "TIEMPO: ";
+        char timeS[15] = "TIEMPO (s): ";
         gcvt(segundos,9,buffer);
         strcpy(res,timeS);
         strcat(res, buffer);
@@ -319,6 +345,9 @@ int jugar(){
 
     // Si el juego finaliza, se destruyen los objetos creados por allegro 
     // para liberar la memoria utilizada
+    al_destroy_bitmap(newHueco);
+    al_destroy_bitmap(newTurbo);
+    al_destroy_bitmap(newVida);
     al_destroy_bitmap(horizonte);
     al_destroy_bitmap(CarFront);
     al_destroy_bitmap(CarDer);
