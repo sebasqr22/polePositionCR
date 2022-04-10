@@ -35,6 +35,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private Jugador jugador4 = new Jugador();
     private ArregloTurbos listaTurbos = new ArregloTurbos(1);
     private ArregloVidas listaVidas = new ArregloVidas(1);
+    private ArregloHuecos listaHuecos = new ArregloHuecos(1);
 
 
     public static SocketCliente server = new SocketCliente();
@@ -266,6 +267,9 @@ public class GUI extends javax.swing.JFrame implements Observador {
 
             if (tipoNum == 2) {
                 System.out.println("HUECO\n");
+                Huecos hueco = new Huecos(corX, corY);
+                listaHuecos.insertar(hueco);
+
             } else if (tipoNum == 3) {
                 Vidas vida = new Vidas(corX, corY);
                 listaVidas.insertar(vida);
