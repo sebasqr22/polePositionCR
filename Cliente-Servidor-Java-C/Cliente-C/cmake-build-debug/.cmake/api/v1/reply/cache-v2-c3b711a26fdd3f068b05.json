@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-j8"
+			"value" : "-j4"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/184/bin/cmake/linux/bin/cmake"
+			"value" : "/home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -167,7 +167,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/184/bin/cmake/linux/bin/cpack"
+			"value" : "/home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/184/bin/cmake/linux/bin/ctest"
+			"value" : "/home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -967,7 +967,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21"
+			"value" : "/home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/share/cmake-3.21"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1215,7 +1215,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
 		},
 		{
 			"name" : "Clientee_IS_TOP_LEVEL",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
+			"value" : "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 		},
 		{
 			"name" : "ProcessorCount_cmd_nproc",

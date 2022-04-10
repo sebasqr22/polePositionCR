@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/184/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/184/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/user/Descargas/CLion-2021.1.3/clion-2021.1.3/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
+CMAKE_SOURCE_DIR = "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Clientee.dir/depend.make
@@ -72,44 +72,44 @@ include CMakeFiles/Clientee.dir/flags.make
 CMakeFiles/Clientee.dir/Cliente.c.o: CMakeFiles/Clientee.dir/flags.make
 CMakeFiles/Clientee.dir/Cliente.c.o: ../Cliente.c
 CMakeFiles/Clientee.dir/Cliente.c.o: CMakeFiles/Clientee.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Clientee.dir/Cliente.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Cliente.c.o -MF CMakeFiles/Clientee.dir/Cliente.c.o.d -o CMakeFiles/Clientee.dir/Cliente.c.o -c "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Clientee.dir/Cliente.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Cliente.c.o -MF CMakeFiles/Clientee.dir/Cliente.c.o.d -o CMakeFiles/Clientee.dir/Cliente.c.o -c "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c"
 
 CMakeFiles/Clientee.dir/Cliente.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Clientee.dir/Cliente.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" > CMakeFiles/Clientee.dir/Cliente.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" > CMakeFiles/Clientee.dir/Cliente.c.i
 
 CMakeFiles/Clientee.dir/Cliente.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Clientee.dir/Cliente.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" -o CMakeFiles/Clientee.dir/Cliente.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" -o CMakeFiles/Clientee.dir/Cliente.c.s
 
 CMakeFiles/Clientee.dir/Socket_Cliente.c.o: CMakeFiles/Clientee.dir/flags.make
 CMakeFiles/Clientee.dir/Socket_Cliente.c.o: ../Socket_Cliente.c
 CMakeFiles/Clientee.dir/Socket_Cliente.c.o: CMakeFiles/Clientee.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Clientee.dir/Socket_Cliente.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Socket_Cliente.c.o -MF CMakeFiles/Clientee.dir/Socket_Cliente.c.o.d -o CMakeFiles/Clientee.dir/Socket_Cliente.c.o -c "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Clientee.dir/Socket_Cliente.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Socket_Cliente.c.o -MF CMakeFiles/Clientee.dir/Socket_Cliente.c.o.d -o CMakeFiles/Clientee.dir/Socket_Cliente.c.o -c "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c"
 
 CMakeFiles/Clientee.dir/Socket_Cliente.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Clientee.dir/Socket_Cliente.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c" > CMakeFiles/Clientee.dir/Socket_Cliente.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c" > CMakeFiles/Clientee.dir/Socket_Cliente.c.i
 
 CMakeFiles/Clientee.dir/Socket_Cliente.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Clientee.dir/Socket_Cliente.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c" -o CMakeFiles/Clientee.dir/Socket_Cliente.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket_Cliente.c" -o CMakeFiles/Clientee.dir/Socket_Cliente.c.s
 
 CMakeFiles/Clientee.dir/Socket.c.o: CMakeFiles/Clientee.dir/flags.make
 CMakeFiles/Clientee.dir/Socket.c.o: ../Socket.c
 CMakeFiles/Clientee.dir/Socket.c.o: CMakeFiles/Clientee.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Clientee.dir/Socket.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Socket.c.o -MF CMakeFiles/Clientee.dir/Socket.c.o.d -o CMakeFiles/Clientee.dir/Socket.c.o -c "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Clientee.dir/Socket.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Clientee.dir/Socket.c.o -MF CMakeFiles/Clientee.dir/Socket.c.o.d -o CMakeFiles/Clientee.dir/Socket.c.o -c "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c"
 
 CMakeFiles/Clientee.dir/Socket.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Clientee.dir/Socket.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c" > CMakeFiles/Clientee.dir/Socket.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c" > CMakeFiles/Clientee.dir/Socket.c.i
 
 CMakeFiles/Clientee.dir/Socket.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Clientee.dir/Socket.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c" -o CMakeFiles/Clientee.dir/Socket.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/Socket.c" -o CMakeFiles/Clientee.dir/Socket.c.s
 
 # Object files for target Clientee
 Clientee_OBJECTS = \
@@ -125,7 +125,7 @@ Clientee: CMakeFiles/Clientee.dir/Socket_Cliente.c.o
 Clientee: CMakeFiles/Clientee.dir/Socket.c.o
 Clientee: CMakeFiles/Clientee.dir/build.make
 Clientee: CMakeFiles/Clientee.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Clientee"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Clientee"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Clientee.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +137,6 @@ CMakeFiles/Clientee.dir/clean:
 .PHONY : CMakeFiles/Clientee.dir/clean
 
 CMakeFiles/Clientee.dir/depend:
-	cd "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C" "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C" "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" "/home/sebas/Escritorio/repos/PARA C POLE POSITION/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles/Clientee.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C" "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C" "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug" "/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/CMakeFiles/Clientee.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Clientee.dir/depend
 
