@@ -42,6 +42,22 @@ struct calle
                 {0.0f ,200.0f},
                 {0.2f ,500.0f},
                 {0.0f ,200.0f}}};
+// Estructura para huecos
+struct Huecos
+{
+    int distH;
+}Huecos = {0};
+// Estructura para turbos
+struct Turbos
+{
+    int distT;
+}Turbos = {0};
+// Estructura para vidas
+struct Vidas
+{
+    int distV;
+}Vidas = {0};
+
 
 
 // Se inicia la comunicacion con el servidor
@@ -57,6 +73,7 @@ void tiempoJuego(){
         milesimas = 0;
     }
 }
+
 
 /**
  * @brief Metodo del juego
@@ -77,6 +94,10 @@ int jugar(){
     ALLEGRO_BITMAP *CarFront = al_load_bitmap("CarFrente.png");
     ALLEGRO_BITMAP *CarIzq = al_load_bitmap("CarIzq.png");
     ALLEGRO_BITMAP *CarDer = al_load_bitmap("CarDer.png");
+
+    ALLEGRO_BITMAP *newTurbo = al_load_bitmap("turbo.png");
+    ALLEGRO_BITMAP *newHueco = al_load_bitmap("hueco.png");
+    ALLEGRO_BITMAP *newVida = al_load_bitmap("vida.png");
     ALLEGRO_DISPLAY *ventana = 0; 
     ventana = al_create_display(1000, 600); // Se crea una ventana nueva
 
@@ -101,8 +122,10 @@ int jugar(){
         fprintf(stderr, "Fallo al crear la ventana.\n");
         return -1;
     }
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
 
-    //pthread_join(hilo, NULL); /////////////////////////////////////// habilitar para conexion
+    pthread_join(hilo, NULL); /////////////////////////////////////// habilitar para conexion
 
     /**
      * @brief Loop del juego
@@ -122,6 +145,9 @@ int jugar(){
         ellapsed_time = (double)eTime/CLOCKS_PER_SEC;
         int screenWidth = 1000;
         int screenHeight = 600;
+        Huecos.distH = getNumeroH();
+        Turbos.distT = getNumeroT();
+        Vidas.distV = getNumeroV();
 
         //Se asigna un punto cada 10 segundos jugados
         if (segundos == 10*multiploSeg){
@@ -223,10 +249,9 @@ int jugar(){
 
         // Si se presiona la tecla ARRIBA, se acelera 
         if (al_key_down(&keyState, ALLEGRO_KEY_UP)){
-            float data = 5; 
             char buffer[20];
             gcvt(jugador.distancia,9,buffer); // Se convierte el numero a una cadena de caracteres
-            enviarMensaje(buffer); // se envia al servidor la distancia recorrida por el jugador 
+            //enviarMensaje(buffer); // se envia al servidor la distancia recorrida por el jugador 
 
             // Si se va por una curva, se crea inercia en el carro arrastrandolo a la orilla
             jugador.carSpeed += 2.0f * (ellapsed_time + 0.001);
