@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
@@ -9,6 +10,8 @@
 #include "comunicacion.c"
 #include <pthread.h>
 
+// Variables globales
+int milesimas = 0, segundos = 0, multiploSeg = 1;
 
 void *comenzarComunicacion(void *valor){
     printf("Se inicia el segundo hilo comunicacion.........\n");
@@ -16,12 +19,18 @@ void *comenzarComunicacion(void *valor){
     return NULL;
 }
 
+void tiempoJuego(){
+    if (milesimas>20){
+        segundos ++;
+        milesimas = 0;
+    }
+}
+
 int main()
 {
     // Inicialización del juego
-    pthread_t hilo;
-    pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
-    enviarMensaje("Hola desde el cliente");
+    //pthread_t hilo;
+    //pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
     
 
     al_init();
@@ -33,7 +42,6 @@ int main()
     // Se crea una ventana nueva
     ALLEGRO_DISPLAY *ventana = 0;
     ventana = al_create_display(1000, 600);
-    printf("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
     
 
@@ -54,9 +62,9 @@ int main()
     ALLEGRO_EVENT_QUEUE * queue;
     ALLEGRO_TIMER *timer;
     ALLEGRO_BITMAP *horizonte = al_load_bitmap("horizonte.jpg");
-    ALLEGRO_BITMAP *CarFront = al_load_bitmap("CarFrente.jpg");
-    ALLEGRO_BITMAP *CarIzq = al_load_bitmap("CarIzq.jpg");
-    ALLEGRO_BITMAP *CarDer = al_load_bitmap("CarDer.jpg");
+    ALLEGRO_BITMAP *CarFront = al_load_bitmap("CarFrente.png");
+    ALLEGRO_BITMAP *CarIzq = al_load_bitmap("CarIzq.png");
+    ALLEGRO_BITMAP *CarDer = al_load_bitmap("CarDer.png");
 
     bool done = false;
     queue = al_create_event_queue();
@@ -80,31 +88,27 @@ int main()
                          {0.2f ,500.0f},
                          {0.0f ,200.0f}};
     // Variables para el control del juego
+    int vidas = 3;
+    int puntos = 0;
     float carSpeed = 0.0f;
     float curvatura = 0.0f;
-    float roadCurv = 0.0f;
-    float jugadorCurv = 0.0f;
     float carPos = 0;
-    float carPosition = 0;
     float distancia = 0.0f;
     float dist = 0.0f;
     long time1 = clock();
     long time2, eTime;
     double ellapsed_time;
 
-    pthread_join(hilo, NULL);
-    printf("A SU MEKA");
+    //pthread_join(hilo, NULL);
+    //printf("A SU MEKA");
 
     // loop del juego // crear conexión con servidor antes de esto
     while(!done){
-        
         // Manejo del tiempo
         time2 = clock();
         eTime = time2- time1;
         time1 = time2;
         ellapsed_time = (double)eTime/CLOCKS_PER_SEC;
-        
-
 
         // Variables para el control de los eventos del juego
         ALLEGRO_KEYBOARD_STATE keyState;
@@ -112,29 +116,29 @@ int main()
         al_get_keyboard_state(&keyState);
         al_wait_for_event(queue, &evt);
 
+        //Se asigna un punto cada 10 segundos jugados
+        if (segundos == 10*multiploSeg){
+            puntos ++;
+            multiploSeg ++;
+        }
+
         // Si se cierra la ventana creada, finaliza el juego
-        if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE) || evt.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+        if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
         {
             done = true;
         }
 
         int roadSection = 0;
         float offset = 0;
-        // Se encuentra la posicion del jugador en la pista
-        //         1       <   11            10.0    <=    d
         while (roadSection < sizeof(road) && offset <= distancia){
-            offset += road[roadSection][1]; // 10.0
-            roadSection++; // 10
+            offset += road[roadSection][1]; 
+            roadSection++; 
         }
 
 
         float targetCurvature = road[roadSection-1][0];
         float roadCurveDiff = (targetCurvature - curvatura)*(ellapsed_time + 0.05) * carSpeed; // elapsed
         curvatura = roadCurveDiff; 
-
-        //printf("Curva: %f\n", carPos);
-
-        roadCurv += (curvatura)* ellapsed_time * carSpeed;
 
         al_flip_display();
         al_clear_to_color(al_map_rgb(79, 79, 79));
@@ -181,7 +185,6 @@ int main()
                     b = 0;
                 }
 
-
                 // Se dibuja la perspectiva del juego
                 if (xpos >= 0 && xpos < nLeftField)
                     al_draw_filled_rectangle(xpos, 200 + ypos, 10+xpos, 210 + ypos,al_map_rgb(0,verde,0));
@@ -202,7 +205,6 @@ int main()
         {
             al_draw_bitmap(CarDer, carPos + 462,500,0);
             carSpeed += 2.0f * (ellapsed_time + 0.001);
-            jugadorCurv += 0.7f * ellapsed_time;
             carPos += 20;
         }
 
@@ -211,7 +213,6 @@ int main()
         {
             al_draw_bitmap(CarIzq, carPos + 462,500,0);
             carSpeed += 2.0f * (ellapsed_time + 0.001);
-            jugadorCurv -= 0.7f * ellapsed_time;
             carPos -= 20;
         }
 
@@ -238,23 +239,52 @@ int main()
 
         // Se mueve el carro hacia los lados de acuerdo con su velocidad
         distancia += (70.0f * carSpeed) * ellapsed_time;
-        dist += (70.0f * carSpeed)*ellapsed_time;
+        dist += (70.0f * carSpeed)*(ellapsed_time + 0.09);
 
-        
-        if(carPos <= -380.0f || carPos >= 380.0f) // if(fabs(jugadorCurv - roadCurv) >= 0.8f)
+        // Si el jugador se sale de la calle, su velocidad es cero
+        if(carPos <= -380.0f || carPos >= 380.0f) 
            carSpeed -= 5.0f *ellapsed_time;
         
-        float data = 5;
-        char bufvida[20];
-        char vida[100] = "VIDA: ";
-        gcvt(data,6,bufvida); // Se convierte el numero de vidaas a una cadena de caracteres
-        //char f = bufvida;
-        //concatenarCharACadena(5, vida);
         
-        al_draw_text(font,al_map_rgb(0,0,0),5,5,ALLEGRO_ALIGN_LEFT,"VIDA:");
-        al_draw_text(font,al_map_rgb(0,0,0),5,20,ALLEGRO_ALIGN_LEFT,"DISTANCIA:");
-        al_draw_text(font,al_map_rgb(0,0,0),5,35,ALLEGRO_ALIGN_LEFT,"PUNTOS:");
-        al_draw_text(font,al_map_rgb(0,0,0),5,50,ALLEGRO_ALIGN_LEFT,"VELOCIDAD:");
+        char buffer[5]; // se guarda el numero en formato char
+        char res[100];
+        // Para imprimir las vidas en tiempo real
+        char vida[10] = "VIDAS: ";
+        gcvt(vidas,6,buffer); // Se convierte el numero de vidas a una cadena de caracteres
+        strcpy(res,vida);
+        strcat(res, buffer);
+        al_draw_text(font,al_map_rgb(0,0,0),5,5,ALLEGRO_ALIGN_LEFT,res);
+
+        // Para imprimir distancia en tiempo real
+        char distance[20] = "DISTANCIA (m): ";
+        gcvt(distancia,9,buffer); // Se convierte el numero de vidas a una cadena de caracteres
+        strcpy(res,distance);
+        strcat(res, buffer);
+        al_draw_text(font,al_map_rgb(0,0,0),5,25,ALLEGRO_ALIGN_LEFT,res);
+
+        // Para imprimir distancia en tiempo real
+        char points[10] = "PUNTOS: ";
+        gcvt(puntos,9,buffer); // Se convierte el numero de vidas a una cadena de caracteres
+        strcpy(res,points);
+        strcat(res, buffer);
+        al_draw_text(font,al_map_rgb(0,0,0),5,45,ALLEGRO_ALIGN_LEFT,res);
+
+        // Para imprimir distancia en tiempo real
+        char vel[20] = "VELOCIDAD (km/h): ";
+        gcvt(carSpeed*100,9,buffer); // Se convierte el numero de vidas a una cadena de caracteres
+        strcpy(res,vel);
+        strcat(res, buffer);
+        al_draw_text(font,al_map_rgb(0,0,0),5,65,ALLEGRO_ALIGN_LEFT,res);
+        
+        
+        milesimas ++;
+        tiempoJuego();
+        // Para imprimir el tiempo de juego
+        char timeS[10] = "TIEMPO: ";
+        gcvt(segundos,9,buffer); // Se convierte el numero de vidas a una cadena de caracteres
+        strcpy(res,timeS);
+        strcat(res, buffer);
+        al_draw_text(font,al_map_rgb(0,0,0),5,85,ALLEGRO_ALIGN_LEFT,res);
     }
     
 
