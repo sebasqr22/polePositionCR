@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="" />
-=======
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Cliente-C/Cliente.c" afterDir="false" />
@@ -36,8 +33,9 @@
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Cliente-C/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
     </list>
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +75,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Proyect3/ServidorJavaC" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager" selected="Application.Main">

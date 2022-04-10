@@ -13,16 +13,26 @@
 char mensajeRecibido[100] = "";
 int Socket_Con_Servidor;
 
-
+/**
+ * @brief Funcion para enviar datos
+ * 
+ * @param mensaje Mensaje a enviar
+ */
 void enviarMensaje(char mensaje[50]){
     u_long Longitud_Cadena = strlen(mensaje)+1;
     u_long Aux = htonl (Longitud_Cadena);
+    Escribe_Socket (Socket_Con_Servidor, (char *)&Aux, sizeof(Longitud_Cadena));
     Escribe_Socket (Socket_Con_Servidor, mensaje, Longitud_Cadena);
     printf ("Mensaje enviado: %s\n", mensaje);
 }
-// Se espera a que llenguen mensajes del cliente
-void *Comunicacion(void *valor){
-    printf("Se inicia el segundo hilo.........");
+/**
+ * @brief Se espera a que llenguen mensajes del cliente
+ * 
+ * @param valor 
+ * @return void* 
+ */
+void *RecibirDatos(void *valor){
+    printf("Se inicia el segundo hilo recibir.........\n");
     u_long Longitud_Cadena = 0;
     u_long Aux;
     char Cadena[100];
@@ -36,8 +46,10 @@ void *Comunicacion(void *valor){
             break;
         }
     }
-    close (Socket_Con_Servidor);
+    //close (Socket_Con_Servidor);
 }
+
+
 /**
  * @brief Se inicia la conexion con el servidor
  */
@@ -46,9 +58,6 @@ void iniciarServidor(){
     * Descriptor del socket y buffer para datos
     */
      // descriptor
-    u_long Longitud_Cadena = 0;
-    u_long Aux;
-    char Cadena[100];
 
 
     Socket_Con_Servidor = Abre_Conexion_Inet (); // retorna el numero del descriptor
@@ -59,8 +68,8 @@ void iniciarServidor(){
     }
     else{ printf("Conectado correctamente!\n");}
 
-    pthread_t hilo;
-    pthread_create(&hilo,NULL,Comunicacion,NULL);
+    pthread_t hiloRecibir;
+    pthread_create(&hiloRecibir,NULL,RecibirDatos,NULL);
 }
 
 char *getMensaje(){

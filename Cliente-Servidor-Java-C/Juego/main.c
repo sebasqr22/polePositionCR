@@ -11,7 +11,7 @@
 
 
 void *comenzarComunicacion(void *valor){
-    printf("Se inicia el segundo hilo.........");
+    printf("Se inicia el segundo hilo comunicacion.........\n");
     iniciarServidor();
     return NULL;
 }
@@ -21,6 +21,8 @@ int main()
     // Inicialización del juego
     pthread_t hilo;
     pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
+    enviarMensaje("Hola desde el cliente");
+    
 
     al_init();
     al_init_primitives_addon();
@@ -31,6 +33,7 @@ int main()
     // Se crea una ventana nueva
     ALLEGRO_DISPLAY *ventana = 0;
     ventana = al_create_display(1000, 600);
+    printf("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
     
 
@@ -39,6 +42,7 @@ int main()
         fprintf(stderr, "Fallo al inicializar Allegro 5.\n");
         return -1;
     }
+    
     
     // Si no se puede crear la ventana, se lanza error y se cierra la aplicación
     if (!ventana){
@@ -99,7 +103,6 @@ int main()
         eTime = time2- time1;
         time1 = time2;
         ellapsed_time = (double)eTime/CLOCKS_PER_SEC;
-        //printf("El ellkapsed tim es: %lf",ellapsed_time);
         
 
 
@@ -123,7 +126,6 @@ int main()
             offset += road[roadSection][1]; // 10.0
             roadSection++; // 10
         }
-        //printf("El ellkapsed tim es: %d\n", roadSection);
 
 
         float targetCurvature = road[roadSection-1][0];
@@ -215,6 +217,11 @@ int main()
 
         // Si se presiona la tecla ARRIBA, se acelera 
         if (al_key_down(&keyState, ALLEGRO_KEY_UP)){
+            float data = 5; 
+            char buffer[20];
+            gcvt(distancia,9,buffer); // Se convierte el numero a una cadena de caracteres
+            enviarMensaje(buffer); // se envia la distancia
+
             carSpeed += 2.0f * (ellapsed_time + 0.001);
             if(targetCurvature > 0)
                 carPos -= 10;
@@ -236,6 +243,13 @@ int main()
         
         if(carPos <= -380.0f || carPos >= 380.0f) // if(fabs(jugadorCurv - roadCurv) >= 0.8f)
            carSpeed -= 5.0f *ellapsed_time;
+        
+        float data = 5;
+        char bufvida[20];
+        char vida[100] = "VIDA: ";
+        gcvt(data,6,bufvida); // Se convierte el numero de vidaas a una cadena de caracteres
+        //char f = bufvida;
+        //concatenarCharACadena(5, vida);
         
         al_draw_text(font,al_map_rgb(0,0,0),5,5,ALLEGRO_ALIGN_LEFT,"VIDA:");
         al_draw_text(font,al_map_rgb(0,0,0),5,20,ALLEGRO_ALIGN_LEFT,"DISTANCIA:");

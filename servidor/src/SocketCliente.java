@@ -58,19 +58,37 @@ public class SocketCliente implements SujetoObservable {
 
     }
     public void iniciar() {
-        while(true){
-            try {
-                System.out.println("Esperando cliente en el puerto " + String.valueOf(port) + "...\n");
-                servidor = server.accept();
-                System.out.printf("Conectado a: " + servidor.getRemoteSocketAddress());
-                BufferedReader entrada = new BufferedReader( new InputStreamReader(servidor.getInputStream()));
-                llegada = entrada.readLine();
+        try {
+            System.out.println("Esperando cliente en el puerto " + String.valueOf(port) + "...\n");
+            servidor = server.accept();
+            System.out.printf("Conectado a: " + servidor.getRemoteSocketAddress() + "\n");
+            servidor.setSoLinger (true, 10);
+            while (true){
+                // Se espera por el mensaje del cliente
+                System.out.println("Esperando mensaje del cliente....");
+                // Se preparan los datos para ser leidos
+                DataInputStream bufferEntrada = new DataInputStream (servidor.getInputStream());
+                System.out.println("Se ha recibido un mensaje...");
+                DatoSocket aux = new DatoSocket("");
+                aux.readObject (bufferEntrada); // se espera el mensaje
+                System.out.println("Se leyo mensaje...");
 
-
-            } catch (IOException e) {
-                System.out.printf("MAmeluco el tuco!");
-                e.printStackTrace();
+                // Se obtiene el contenido importante del mensaje y se guarda en la variable mensaje.
+                String texto = aux.toString();
+                String mensaje = "";
+                int cont = 0;
+                for (int i=0; i < texto.length(); i++){
+                    if (cont >= 4){
+                        mensaje = mensaje + texto.charAt(i);
+                    }
+                    cont ++;
+                }
+                System.out.println ("Mensaje Recibido: " + mensaje);
             }
+        }
+        catch (IOException e) {
+            System.out.printf("No se pudo establecer la conexion con el cliente!");
+            e.printStackTrace();
         }
     }
     public void enviar(String salida) throws IOException {
