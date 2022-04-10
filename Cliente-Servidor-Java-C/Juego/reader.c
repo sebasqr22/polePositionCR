@@ -23,3 +23,18 @@ char *leer(){
     return todo;
 
 }
+
+void escribir(char mensaje){
+    FILE *archivo = fopen("readme.txt", "w");
+
+
+    if (archivo == NULL)
+    {
+        printf("ERROR");
+
+    }
+    fprintf(archivo, mensaje);
+    fclose(archivo);
+
+    return 0;
+}
