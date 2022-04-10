@@ -13,6 +13,7 @@ public class SocketCliente implements SujetoObservable {
     private int port;
     public void enlazarObjetos(Observador o1){observadores.add(o1);};
     private ServerSocket server;
+    private reader lector = new reader();
 
     void encontrarPuerto(){
         for(int i=1000; i<=65000; i++){
@@ -84,6 +85,9 @@ public class SocketCliente implements SujetoObservable {
                     cont ++;
                 }
                 System.out.println ("Mensaje Recibido: " + mensaje);
+                llegada = lector.leer();
+                lector.reset();
+                notificar();
             }
         }
         catch (IOException e) {

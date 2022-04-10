@@ -122,6 +122,9 @@ public class GUI extends javax.swing.JFrame implements Observador {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        yLabel.setVisible(false);
+        yText.setVisible(false);
+
         jugadoresArea.setEditable(false);
         jugadoresArea.setColumns(20);
         jugadoresArea.setRows(5);
@@ -258,23 +261,22 @@ public class GUI extends javax.swing.JFrame implements Observador {
         // TODO add your handling code here:
         int tipoNum = tipoCombo.getSelectedIndex() + 2;
         String corX = xLabel.getText();
-        String corY = yLabel.getText();
 
         xLabel.setText("");
-        yLabel.setText("");
-        if(!Objects.equals(corX, "") & !Objects.equals(corY, "")) {
-            String mensaje = String.valueOf(tipoNum) + "-" + corX + "-" + corY;
+
+        if(!Objects.equals(corX, "")) {
+            String mensaje = String.valueOf(tipoNum) + "-" + corX + "-";
 
             if (tipoNum == 2) {
                 System.out.println("HUECO\n");
-                Huecos hueco = new Huecos(corX, corY);
+                Huecos hueco = new Huecos(corX, "0");
                 listaHuecos.insertar(hueco);
 
             } else if (tipoNum == 3) {
-                Vidas vida = new Vidas(corX, corY);
+                Vidas vida = new Vidas(corX, "0");
                 listaVidas.insertar(vida);
             } else {
-                Turbos turbo = new Turbos(corX, corY);
+                Turbos turbo = new Turbos(corX, "0");
                 listaTurbos.insertar(turbo);
             }
             System.out.println("MENSAJE A ENVIAR: " + mensaje + "\n");
