@@ -12,7 +12,9 @@ public class SocketCliente implements SujetoObservable {
     private ArrayList<Observador> observadores;
     private int port;
     public void enlazarObjetos(Observador o1){observadores.add(o1);};
-    private ServerSocket server;
+
+
+    private ServerSocket server, server1;
     private reader lector = new reader();
 
     void encontrarPuerto(){
@@ -32,7 +34,7 @@ public class SocketCliente implements SujetoObservable {
 
 
     ;
-    private Socket servidor, enviador;
+    private Socket servidor, servidor1;
 
 
 
@@ -58,6 +60,18 @@ public class SocketCliente implements SujetoObservable {
 
 
     }
+    private void escuchar(ServerSocket server, Socket socket, int puerto){
+        try {
+            System.out.println("Esperando cliente en el puerto " + String.valueOf(puerto) + "...\n");
+            socket = server.accept();
+            System.out.printf("Conectado a: " + socket.getRemoteSocketAddress() + "\n");
+            socket.setSoLinger (true, 10);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void iniciar() {
         try {
             System.out.println("Esperando cliente en el puerto " + String.valueOf(port) + "...\n");
