@@ -93,7 +93,7 @@ bool hayColision(float xCar, float yCar, float xObject, float yObject, float rCa
 
 // Se calcula el radio de de la elipse
 float radio(float a, float b,float cb, float h){
-    float r = b/(sqrtf(1-(a-(powf(b,2)/a)) * (powf(cosf(asinf(cb/h)), 2))));
+    float r = b/sqrtf(1-(1-((powf(b,2)) / (powf(a,2)))) * powf(cosf(asinf(cb/h)), 2));
     return r;
 }
 
