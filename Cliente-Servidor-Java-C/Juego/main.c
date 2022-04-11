@@ -11,8 +11,10 @@
 #include <pthread.h>
 
 // Variables globales
-int milesimas = 0, segundos = 0, multiploSeg = 1;
+int milesimas = 0, milesimasT = 0,segundos = 0,segundosT = 0, multiploSeg = 1;
 float carPos = 0;
+int T=0;
+int tTurbo =0;
 int posicionH = 0, posicionT = 0, posicionV = 0;
 float dist = 0.0f;
 long time1;
@@ -72,6 +74,13 @@ void tiempoJuego(){
     if (milesimas>20){
         segundos ++;
         milesimas = 0;
+    }
+}
+
+void tiempoTurbo(){
+    if (milesimasT>20){
+        segundosT ++;
+        milesimasT = 0;
     }
 }
 
@@ -149,31 +158,7 @@ int jugar(){
         Huecos.distH = getNumeroH();
         Turbos.distT = getNumeroT();
         Vidas.distV = getNumeroV();
-
-        // Se dibujan los huecos segun los mensajes del servidor
-        if (Huecos.distH > jugador.distancia && (Huecos.distH - jugador.distancia)<200){
-            al_draw_bitmap(newHueco, 500,250+posicionH,0);
-            posicionH+= 10;
-        }
-        if ((jugador.distancia - Huecos.distH) > 500){
-            posicionH = 0;
-        }
-        // Se dibujan los turbos segun los mensajes del servidor
-        if (Turbos.distT > jugador.distancia && (Turbos.distT - jugador.distancia)<200){
-            al_draw_bitmap(newHueco, 500,250+posicionT,0);
-            posicionT+= 10;
-        }
-        if ((jugador.distancia - Turbos.distT) > 500){
-            posicionT = 0;
-        }
-        // Se dibujan las vidas segun los mensajes del servidor
-        if (Vidas.distV > jugador.distancia && (Vidas.distV - jugador.distancia)<200){
-            al_draw_bitmap(newVida, 500,250+posicionV,0);
-            posicionV+= 10;
-        }
-        if ((jugador.distancia - Vidas.distV) > 500){
-            posicionV = 0;
-        }
+        
 
         //Se asigna un punto cada 10 segundos jugados
         if (segundos == 10*multiploSeg){
@@ -182,7 +167,7 @@ int jugar(){
         }
 
         // Si se cierra la ventana creada, finaliza el juego
-        if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
+        if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE) || jugador.vidas <= 0)
         {
             done = true;
         }
@@ -197,6 +182,36 @@ int jugar(){
         float targetCurvature = calle.road[roadSection-1][0];
         float roadCurveDiff = (targetCurvature - calle.curvatura)*(ellapsed_time + 0.05) * jugador.carSpeed; // elapsed
         calle.curvatura = roadCurveDiff; 
+
+         // Se dibujan los huecos segun los mensajes del servidor ///////////////////////////////////////////////////
+        if (Huecos.distH > jugador.distancia && (Huecos.distH - jugador.distancia)<200){
+            al_draw_bitmap(newHueco, 500,250+posicionH,0);
+            posicionH+= 10;
+        }
+        int jd = jugador.distancia;
+        int d = jd - Huecos.distH;
+        if (d > 50){
+            posicionH = 0;
+            Huecos.distH =0;
+        }
+        // Se dibujan los turbos segun los mensajes del servidor
+        if (Turbos.distT > jugador.distancia && (Turbos.distT - jugador.distancia)<200){
+            al_draw_bitmap(newTurbo, 500,250+posicionT,0);
+            posicionT+= 10;
+        }
+        if ((jugador.distancia - Turbos.distT) > 50){
+            posicionT = 0;
+            Turbos.distT = 0;
+        }
+        // Se dibujan las vidas segun los mensajes del servidor
+        if (Vidas.distV > jugador.distancia && (Vidas.distV - jugador.distancia)<200){
+            al_draw_bitmap(newVida, 500,250+posicionV,0);
+            posicionV+= 10;
+        }
+        if ((jugador.distancia - Vidas.distV) > 50){
+            posicionV = 0;
+            Vidas.distV =0;
+        }
 
         // Se actualiza la pantalla 
         al_flip_display();
@@ -290,10 +305,23 @@ int jugar(){
         else
             jugador.carSpeed -= 1.0f * ellapsed_time;
 
-        // Se limita la velocidad del carro
+        // Se limita la velocidad del carro //////////////////////////////////////////////////////////////////////
         if(jugador.carSpeed<0.0f) jugador.carSpeed = 0.0f;
-        if(jugador.carSpeed>1.0f) jugador.carSpeed = 1.0f; 
-
+        if(jugador.carSpeed>1.0f) {
+            
+            printf("T: %d\n", T);
+            if(T==1 && segundosT < 5){
+                printf("segundos: %d\n", segundosT);
+                jugador.carSpeed = 1.8f; 
+                Turbos.distT = jugador.distancia+100;
+                tiempoTurbo();
+            }
+            else
+                jugador.carSpeed = 1.0f; 
+                T = 0;
+                segundosT =0;
+                milesimasT =0;
+        }
         // Se mueve el carro hacia los lados de acuerdo con su velocidad
         jugador.distancia += (70.0f * jugador.carSpeed) * ellapsed_time;
         dist += (70.0f * jugador.carSpeed)*(ellapsed_time + 0.09);
@@ -301,6 +329,23 @@ int jugar(){
         // Si el jugador se sale de la calle, su velocidad es cero
         if(carPos <= -380.0f || carPos >= 380.0f) 
            jugador.carSpeed -= 5.0f *ellapsed_time;
+        
+        // Si el jugador se va en un hueco ///////////////////////////////////////////////////////////////////////
+
+        if((carPos + 537)>500 && (carPos + 537)<800 && (posicionH+250 > 500) && (posicionH+250 < 550)) {
+            jugador.carSpeed = 1;
+        }
+           
+        // Si el jugador obtiene un turbo se aumenta su velocidad
+        if(((carPos + 537)>500) && ((carPos + 537)<615) && (Huecos.distH - jugador.distancia)<0 && (Huecos.distH - jugador.distancia)>-100) {
+            T = 1;
+        }
+           
+        // Si el jugador obtiene una vida, se suma a las actuales
+        if((carPos + 537)>500 && (carPos + 537)<600 && Vidas.distV == jugador.distancia) {
+            jugador.vidas += 1;
+        }
+           
         
         // Se imprimen en la pantalla cada una de las variables importantes del jugador
         char buffer[5]; // se guarda el numero en formato char
