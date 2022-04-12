@@ -1,0 +1,3 @@
+/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Juego/build/CMakeFiles/rebuild_cache.dir
+/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Juego/build/CMakeFiles/jaja.dir
+/home/user/Escritorio/Repos GitHub/polePositionCR/Cliente-Servidor-Java-C/Juego/build/CMakeFiles/edit_cache.dir

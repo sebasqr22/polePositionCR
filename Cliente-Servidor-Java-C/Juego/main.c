@@ -13,7 +13,7 @@
 // Variables globales
 int milesimas = 0, milesimasT = 0,segundos = 0,segundosT = 0, multiploSeg = 1;
 float carPos = 0;
-int T=0;
+bool T = false;
 int tTurbo =0;
 int posicionH = 0, posicionT = 0, posicionV = 0;
 float dist = 0.0f;
@@ -28,7 +28,7 @@ struct jugador
     float distancia;
     int puntos;
     int vidas;
-}jugador = {0.0f, 0.0f, 0, 3};
+}jugador = {0.0f, 0.0f, 0, 2};
 
 struct calle
 {
@@ -78,7 +78,9 @@ void tiempoJuego(){
 }
 
 void tiempoTurbo(){
+    printf("Entra al tiempo\n");
     if (milesimasT>20){
+        printf("Aumentan los segundos\n");
         segundosT ++;
         milesimasT = 0;
     }
@@ -147,8 +149,7 @@ int jugar(){
     }
     pthread_t hilo;
     pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
-
-    pthread_join(hilo, NULL); /////////////////////////////////////// habilitar para conexion
+    pthread_join(hilo, NULL); 
 
     /**
      * @brief Loop del juego
@@ -177,6 +178,11 @@ int jugar(){
         if (segundos == 10*multiploSeg){
             jugador.puntos ++;
             multiploSeg ++;
+        }
+
+        // Si se cierra la conexion con el servidor
+        if (getConexion()){
+            break;
         }
 
         // Si se cierra la ventana creada, finaliza el juego
@@ -301,7 +307,6 @@ int jugar(){
             carPos -= 20;
         }
 
-        printf("CarPos: %f\n", carPos + 462);
         // Si se presiona la tecla ARRIBA, se acelera 
         if (al_key_down(&keyState, ALLEGRO_KEY_UP)){
             char buffer[20];
@@ -324,17 +329,19 @@ int jugar(){
         if(jugador.carSpeed>1.0f) {
             
             //printf("T: %d\n", T);
-            if(T==1 && segundosT < 5){
-                //printf("segundos: %d\n", segundosT);
+            if(T == true && segundosT < 5){
+                printf("segundos: %d\n", segundosT);
                 jugador.carSpeed = 1.8f; 
-                Turbos.distT = jugador.distancia+100;
                 tiempoTurbo();
+                milesimasT ++;
             }
-            else
+            else{
                 jugador.carSpeed = 1.0f; 
-                T = 0;
+                T = false;
                 segundosT =0;
                 milesimasT =0;
+            }
+                
         }
         // Se mueve el carro hacia los lados de acuerdo con su velocidad
         jugador.distancia += (70.0f * jugador.carSpeed) * ellapsed_time;
@@ -347,35 +354,30 @@ int jugar(){
         ///--------------------------------------------------------------------------------------------------------
         /// Se verifican colisiones 
         ///--------------------------------------------------------------------------------------------------------
-        float radCarH = radio(38, 16, (250+posicionH)-500, sqrtf(powf(500 - (carPos+462), 2)+powf((250+posicionH)-500,2))); 
-        printf("radCar: %f\n", radCarH);
-        float radHCar = radio(150, 58, 500-(250+posicionH), sqrtf(powf((carPos + 462)-500, 2)+powf(500-(250+posicionH),2)));
-        printf("radHueco: %f\n", radHCar);
-        
-        if(hayColision(carPos + 462, 500, 500, 250+posicionH, radCarH, radHCar)) {  // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
-            printf("Entra a la condicion\n");
+        // Si el jugador se va en un hueco, su velocidad disminuye a cero
+        float radCarH = radio(38, 16, (308+posicionH)-516, sqrtf(powf(650 - (carPos+500), 2)+powf((308+posicionH)-516,2))); 
+        float radHCar = radio(150, 58, 516-(308+posicionH), sqrtf(powf((carPos + 500)-650, 2)+powf(516-(308+posicionH),2)));
+
+        if(hayColision(carPos + 500, 516, 650, 308+posicionH, radCarH, radHCar)) { 
             jugador.carSpeed -= 5.0f *ellapsed_time;
         }
-         /*  
-        // Si el jugador obtiene un turbo se aumenta su velocidad
-        if(((carPos + 537)>500) && ((carPos + 537)<615) && (Huecos.distH - jugador.distancia)<0 && (Huecos.distH - jugador.distancia)>-100) {
-            T = 1;
-        }
-           
-        // Si el jugador obtiene una vida, se suma a las actuales
-        if((carPos + 537)>500 && (carPos + 537)<600 && Vidas.distV == jugador.distancia) {
-            jugador.vidas += 1;
-        }*/
 
-        ///--------------------------------------------------------------------------------------------------------
-        /// bool hayColision(float xCar, float yCar, float xObject, float yObject, float rCar, float rObject){
-        /// float radio(float a, float b,float cb, float h){
-        /// sqrtf(powf(xCar-xObject,2)+powf(yCar-yObject,2))
-        /// xCar = carPos + 462       yCar = 500
-        /// xH = 500       yH = 250+posicionH
-        ///--------------------------------------------------------------------------------------------------------
-           
+        // Si el jugador obtiene un turbo se aumenta su velocidad
+        float radCarT = radio(38, 16, (308+posicionT)-516,sqrtf(powf(558-(carPos+500), 2)+powf((308+posicionT)-516,2)));
+        float radTCar = radio(58, 58, 516-(308+posicionT),sqrtf(powf((carPos+500)-558, 2)+powf(516-(308+posicionT),2)));
         
+        if(hayColision(carPos + 500, 516, 558, 308+posicionT, radCarT, radTCar)) {
+            T = true;
+        }
+
+        // Si el jugador obtiene una vida, se suma a las actuales   
+        float radCarV = radio(38, 16, (296+posicionV)-516,sqrtf(powf(550-(carPos+500), 2)+powf((296+posicionV)-516,2)));
+        float radVCar = radio(50, 46, 516-(296+posicionV), sqrtf(powf((carPos+500)-550, 2)+powf(516-(296+posicionV),2)));
+        
+        if(hayColision(carPos + 500, 516, 550, 296+posicionV, radCarV, radVCar)) {
+            if(jugador.vidas < 3)
+                jugador.vidas += 1;
+        }
         // Se imprimen en la pantalla cada una de las variables importantes del jugador
         char buffer[5]; // se guarda el numero en formato char
         char res[100];
@@ -432,8 +434,7 @@ int jugar(){
     al_uninstall_keyboard();
 }
 
-int main()
-{
+int main(){
     // Al iniciar el juego, se inicia la conexion con el servidor, si la conexion falla, el juego no inicia.
     jugar();   
 

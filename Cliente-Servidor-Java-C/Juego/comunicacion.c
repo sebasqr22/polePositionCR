@@ -13,7 +13,8 @@
 
 
 char mensajeRecibido[100] = "";
-int numberH = 0, numberT = 0, numberV = 0;
+int numberH = 0, numberT = 0, numberV = 0, tiempoLimite = 0;
+bool cerrarVentana = false;
 int Socket_Con_Servidor;
 
 /**
@@ -107,12 +108,19 @@ void *RecibirDatos(void *valor){
             }
             numberT = numero;
         }
-        printf("holaaaaaaaa \n");
+        printf("tiempo limite: %d\n", tiempoLimite);
+        tiempoLimite++;
+        if(tiempoLimite >= 100){
+            printf("Se perdio la conexion con el servidor...\n");
+            cerrarVentana = true;
+            break;
+        }
+            
         if (Longitud_Cadena<0){
             break;
         }
     }
-    //close (Socket_Con_Servidor);
+    close (Socket_Con_Servidor);
 }
 
 
@@ -152,4 +160,7 @@ int getNumeroT(){
 // Retorna la posicion de la vida
 int getNumeroV(){
     return numberV;
+}
+bool getConexion(){
+    return cerrarVentana;
 }
