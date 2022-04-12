@@ -120,8 +120,8 @@ public class GUI extends javax.swing.JFrame implements Observador {
         return nuevo;
     }
 
-    private String[] quitarPartes(String total){
-        total.charAt(0);
+    private String[] quitarPartes(String inicial, String total){
+        total.replaceFirst(inicial, "");
         String[] lista = total.split("-");
         return lista;
     }
@@ -137,6 +137,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     }
 
     private void asignarJugador(String nombre, String color){
+        System.out.println(nombre + " - " + color);
         boolean consultaColor = consultarColorLibre(color);
         if (consultaColor == false){
             color = consultarColorLibre();
@@ -179,11 +180,11 @@ public class GUI extends javax.swing.JFrame implements Observador {
         llegada = server.getInfo();
 
         if(Character.compare(llegada.charAt(0), '1') == 0){ //1-Sebas-3
-            String[] lista = quitarPartes(llegada);
+            String[] lista = quitarPartes("1-", llegada);
             asignarJugador(lista[0], lista[1]);
         }
         else if(Character.compare(llegada.charAt(0), '5') == 0) { //5-Sebas-3543
-            String[] lista = quitarPartes(llegada);
+            String[] lista = quitarPartes("5-",llegada);
             Jugador jugador = encontrarJugador(lista[0]);
             jugador.sumarDistancia(Integer.parseInt(lista[1]));
         }
