@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +44,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/sebas/Escritorio/repos/V5 Pole Positon/polePositionCR"
+  }
+}]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI" />
@@ -89,6 +91,7 @@
       <workItem from="1649518803318" duration="6944000" />
       <workItem from="1649530436988" duration="11560000" />
       <workItem from="1649615340313" duration="974000" />
+      <workItem from="1649781563271" duration="2045000" />
     </task>
     <servers />
   </component>
