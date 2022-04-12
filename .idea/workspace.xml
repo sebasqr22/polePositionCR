@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servidor/src/SocketCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/SocketCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/build/.cmake/api/v1/reply/index-2022-04-12T17-53-30-0990.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +43,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/sebas/Escritorio/repos/V6 Pole POsition/polePositionCR"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sebas/Escritorio/repos/V6 Pole POsition/polePositionCR&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI" />

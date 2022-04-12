@@ -80,6 +80,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private boolean consultarColorLibre(String color){
         boolean libre = false;
         for(int i = 0; i<4; i++){
+            System.out.println("Informacion consultar: "+String.valueOf(listaColores[i].getOcupado()+ " - "+String.valueOf()));
             if(listaColores[i].getOcupado() == false && listaColores[i].getColor() == color){
                 libre = true;
                 break;
@@ -121,7 +122,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     }
 
     private String[] quitarPartes(String inicial, String total){
-        total.replaceFirst(inicial, "");
+        System.out.println("total= "+total);
         String[] lista = total.split("-");
         return lista;
     }
@@ -139,6 +140,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private void asignarJugador(String nombre, String color){
         System.out.println(nombre + " - " + color);
         boolean consultaColor = consultarColorLibre(color);
+        System.out.println(String.valueOf(consultaColor));
         if (consultaColor == false){
             color = consultarColorLibre();
         }
@@ -181,7 +183,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
 
         if(Character.compare(llegada.charAt(0), '1') == 0){ //1-Sebas-3
             String[] lista = quitarPartes("1-", llegada);
-            asignarJugador(lista[0], lista[1]);
+            asignarJugador(lista[1], lista[2]);
         }
         else if(Character.compare(llegada.charAt(0), '5') == 0) { //5-Sebas-3543
             String[] lista = quitarPartes("5-",llegada);

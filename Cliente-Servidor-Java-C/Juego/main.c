@@ -15,7 +15,7 @@ int milesimas = 0, milesimasT = 0,segundos = 0,segundosT = 0, multiploSeg = 1;
 float carPos = 0;
 bool T = false, disparando = false;
 int tTurbo =0;
-int posicionH = 0, posicionT = 0, posicionV = 0, posicionD = 0;
+int posicionH = 0, posicionT = 0, posicionV = 0, posicionD = 0, posicionM;
 float dist = 0.0f;
 long time1;
 long time2, eTime;
@@ -28,6 +28,8 @@ struct jugador
     float distancia;
     int puntos;
     int vidas;
+    char nombre[10];
+    char color[10];
 }jugador = {0.0f, 0.0f, 0, 3};
 
 struct enemigo1
@@ -36,6 +38,7 @@ struct enemigo1
     float distancia;
     int puntos;
     int vidas;
+    char color[10];
 }enemigo1 = {0.0f, 0.0f, 0, 3};
 
 struct enemigo2
@@ -44,6 +47,7 @@ struct enemigo2
     float distancia;
     int puntos;
     int vidas;
+    char color[10];
 }enemigo2 = {0.0f, 0.0f, 0, 3};
 
 struct enemigo3
@@ -52,6 +56,7 @@ struct enemigo3
     float distancia;
     int puntos;
     int vidas;
+    char color[10];
 }enemigo3 = {0.0f, 0.0f, 0, 3};
 
 struct calle
@@ -136,6 +141,7 @@ float radio(float a, float b,float cb, float h){
  * @return int 
  */
 int jugar(){
+    
     // Inicialización del juego
     al_init();
     al_init_primitives_addon();
@@ -149,6 +155,7 @@ int jugar(){
     ALLEGRO_BITMAP *CarFront = al_load_bitmap("CarFrente.png");
     ALLEGRO_BITMAP *CarIzq = al_load_bitmap("CarIzq.png");
     ALLEGRO_BITMAP *CarDer = al_load_bitmap("CarDer.png");
+    ALLEGRO_BITMAP *meta = al_load_bitmap("meta.png");
 
     ALLEGRO_BITMAP *newTurbo = al_load_bitmap("turbo.png");
     ALLEGRO_BITMAP *newHueco = al_load_bitmap("hueco.png");
@@ -187,6 +194,8 @@ int jugar(){
      * 
      */
     while(!done){
+
+        enviarMensaje("1-sebas-azul");
         // Variables para el control de los eventos en la ventana del juego
         ALLEGRO_KEYBOARD_STATE keyState;
         ALLEGRO_EVENT evt;
@@ -288,6 +297,11 @@ int jugar(){
                     al_draw_filled_rectangle(xpos, 200 + ypos, 10+xpos, 210 + ypos,al_map_rgb(0,verde,0));
                 xpos += 5;
             }
+        }
+
+        if(jugador.distancia + 300 >= 10000){
+            al_draw_bitmap(meta, 314,250-posicionM,0);
+            posicionM += 20;
         }
 
          // Se dibujan los huecos segun los mensajes del servidor ///////////////////////////////////////////////////
@@ -489,6 +503,9 @@ int jugar(){
 }
 
 int main(){
+    char cadena[20]; // Aquí alojaremos el valor leído
+    printf("Escribe tu nombre:\n");
+    scanf("%s", cadena); // No usamos &
     // Al iniciar el juego, se inicia la conexion con el servidor, si la conexion falla, el juego no inicia.
     jugar();   
 
