@@ -21,7 +21,7 @@ long time1;
 long time2, eTime;
 double ellapsed_time;
 
-// Estructuras del juego
+// Estructuras de los jugadores
 struct jugador
 {
     float carSpeed;
@@ -59,6 +59,7 @@ struct enemigo3
     char color[10];
 }enemigo3 = {0.0f, 0.0f, 0, 3};
 
+// Estructura para la calle
 struct calle
 {
     float curvatura ;
@@ -104,18 +105,16 @@ void *comenzarComunicacion(void *valor){
     iniciarServidor();
     return NULL;
 }
-
+// Cronometro para el tiempo de juego
 void tiempoJuego(){
     if (milesimas>20){
         segundos ++;
         milesimas = 0;
     }
 }
-
+// Cronometro para la duracion del turbo
 void tiempoTurbo(){
-    printf("Entra al tiempo\n");
     if (milesimasT>20){
-        printf("Aumentan los segundos\n");
         segundosT ++;
         milesimasT = 0;
     }
@@ -298,7 +297,7 @@ int jugar(){
                 xpos += 5;
             }
         }
-
+        // Se dibuja la meta
         if(jugador.distancia + 300 >= 10000){
             al_draw_bitmap(meta, 314,250-posicionM,0);
             posicionM += 20;
