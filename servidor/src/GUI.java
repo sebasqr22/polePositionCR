@@ -34,6 +34,8 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private Jugador jugador2 = new Jugador();
     private Jugador jugador3 = new Jugador();
     private Jugador jugador4 = new Jugador();
+
+    private Jugador listaJugadores[] = new Jugador[4];
     private ArregloTurbos listaTurbos = new ArregloTurbos(1);
     private ArregloVidas listaVidas = new ArregloVidas(1);
     private ArregloHuecos listaHuecos = new ArregloHuecos(1);
@@ -52,6 +54,11 @@ public class GUI extends javax.swing.JFrame implements Observador {
         listaColores[1] = blanco;
         listaColores[2] = morado;
         listaColores[3] = rojo;
+
+        listaJugadores[0] = jugador1;
+        listaJugadores[1] = jugador2;
+        listaJugadores[2] = jugador3;
+        listaJugadores[3] = jugador4;
     }
 
     public static SocketCliente server = new SocketCliente();
@@ -79,6 +86,17 @@ public class GUI extends javax.swing.JFrame implements Observador {
                 break;
             }
         }
+    }
+
+    private Jugador encontrarJugador(String name){
+        Jugador devolucion = new Jugador();
+        for(int i=0; i<4; i++){
+            if(listaJugadores[i].getName() == name){
+                devolucion = listaJugadores[i];
+                break;
+            }
+        }
+        return devolucion;
     }
 
     private String consultarColorLibre(){
@@ -119,27 +137,32 @@ public class GUI extends javax.swing.JFrame implements Observador {
             jugador1.setInfoBasica(nombre, color);
             jugador1.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            enviar("5-" + color + "-" + jugador1.getDistanciaRecorrida());
         }
         else if(jugador2.getInicializado() && color != "NO"){
             jugador2.setInfoBasica(nombre, color);
             jugador2.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            enviar("5-" + color + "-" + jugador2.getDistanciaRecorrida());
         }
         else if(jugador3.getInicializado() && color != "NO"){
             jugador3.setInfoBasica(nombre, color);
             jugador3.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            enviar("5-" + color + "-" + jugador3.getDistanciaRecorrida());
         }
         else if(jugador4.getInicializado() && color != "NO"){
             jugador4.setInfoBasica(nombre, color);
             jugador4.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            enviar("5-" + color + "-" + jugador4.getDistanciaRecorrida());
         }
         else{
             enviar("NO");
             System.out.printf("NO hay espacios para jugadores disponibles...");
         }
     }
+
 
     @Override //aca llega la notifacion del observador y se comienza a depurar el mensaje
     public void update() {
@@ -150,7 +173,11 @@ public class GUI extends javax.swing.JFrame implements Observador {
             String[] lista = quitarPartes(llegada);
             asignarJugador(lista[0], lista[1]);
         }
-
+        else if(Character.compare(llegada.charAt(0), '5') == 0) { //5-Sebas-3543
+            String[] lista = quitarPartes(llegada);
+            Jugador jugador = encontrarJugador(lista[0]);
+            jugador.sumarDistancia(Integer.parseInt(lista[1]));
+        }
     }
 
 

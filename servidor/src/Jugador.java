@@ -2,8 +2,9 @@ public class Jugador {
     private String name;
     private int cantidadVidas;
     private String puerto;
-    private int distanciaRecorrida;
+    private int distanciaRecorrida = 0;
     private boolean inicializado = false;
+
 
     public String getColor() {
         return color;
@@ -61,4 +62,10 @@ public class Jugador {
     public void setDistanciaRecorrida(int distanciaRecorrida) {
         this.distanciaRecorrida = distanciaRecorrida;
     }
+
+    public void sumarDistancia(int num){
+        this.distanciaRecorrida += num;
+    }
+
+
 }
