@@ -87,10 +87,6 @@ public class SocketCliente implements SujetoObservable {
 
     public void iniciar() {
         try {
-            /*
-            llegada = lector.leer();
-            lector.reset();
-            notificar(); */
             System.out.println("Esperando cliente en el puerto " + String.valueOf(port) + "...\n");
             servidor = server.accept();
             System.out.printf("Conectado a: " + servidor.getRemoteSocketAddress() + "\n");
