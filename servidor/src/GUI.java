@@ -136,6 +136,23 @@ public class GUI extends javax.swing.JFrame implements Observador {
         }
     }
 
+    private int colorNumero(String color){
+        int num = 0;
+        if(color.equals("rojo")){
+            num = 1;
+        }
+        else if(color.equals("azul")){
+            num = 2;
+        }
+        else if(color.equals("morado")){
+            num = 3;
+        }
+        else{
+            num = 4;
+        }
+        return num;
+    }
+
     private void asignarJugador(String nombre, String color){
         System.out.println(nombre + " - " + color);
         boolean consultaColor = consultarColorLibre(color);
@@ -147,28 +164,28 @@ public class GUI extends javax.swing.JFrame implements Observador {
         if(jugador1.getInicializado() == false && color.equals("NO") == false){
             jugador1.setInfoBasica(nombre, color);
             jugador1.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append(nombre + "---" + String.valueOf(colorNumero(color)));
             jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador1.getDistanciaRecorrida());
         }
         else if(jugador2.getInicializado() == false && color.equals("NO") == false){
             jugador2.setInfoBasica(nombre, color);
             jugador2.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append(nombre + "---" + String.valueOf(colorNumero(color)));
             jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador2.getDistanciaRecorrida());
         }
         else if(jugador3.getInicializado() == false && color.equals("NO") == false){
             jugador3.setInfoBasica(nombre, color);
             jugador3.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append(nombre + "---" + String.valueOf(colorNumero(color)));
             jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador3.getDistanciaRecorrida());
         }
         else if(jugador4.getInicializado() == false && color.equals("NO") == false){
             jugador4.setInfoBasica(nombre, color);
             jugador4.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append(nombre + "---" + String.valueOf(colorNumero(color)));
             jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador4.getDistanciaRecorrida());
         }

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc4d779c-fd4d-4afc-90e6-fe2e7777bb4b" name="Changes" comment="">
-
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/build/.cmake/api/v1/reply/index-2022-04-12T19-28-05-0135.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/comunicacion.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente-Servidor-Java-C/Juego/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/servidor/src/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
