@@ -28,7 +28,6 @@ void enviarMensaje(char mensaje[50]){
     Escribe_Socket (Socket_Con_Servidor, (char *)&Aux, sizeof(Longitud_Cadena));
     Escribe_Socket (Socket_Con_Servidor, mensaje, Longitud_Cadena);
     printf ("Mensaje enviado: %s\n", mensaje); // #tipo-X(distancia)-Y
-
 }
 /**
  * @brief Se espera a que llenguen mensajes del cliente

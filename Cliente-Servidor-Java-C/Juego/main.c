@@ -12,14 +12,16 @@
 
 // Variables globales
 int milesimas = 0, milesimasT = 0,segundos = 0,segundosT = 0, multiploSeg = 1;
-float carPos = 0;
-bool T = false, disparando = false;
-int tTurbo =0;
 int posicionH = 0, posicionT = 0, posicionV = 0, posicionD = 0, posicionM;
+int tTurbo =0;
+float carPos = 0;
 float dist = 0.0f;
+bool T = false, disparando = false, final = false;
 long time1;
 long time2, eTime;
 double ellapsed_time;
+char player[10];
+char pColor[10];
 
 // Estructuras de los jugadores
 struct jugador
@@ -28,18 +30,17 @@ struct jugador
     float distancia;
     int puntos;
     int vidas;
-    char nombre[10];
     char color[10];
-}jugador = {0.0f, 0.0f, 0, 3};
+}jugador = {0.0f, 0.0f, 0, 3, ' '};
 
 struct enemigo1
 {
     float carSpeed;
     float distancia;
     int puntos;
-    int vidas;
     char color[10];
-}enemigo1 = {0.0f, 0.0f, 0, 3};
+    bool enJuego;
+}enemigo1 = {0.0f, 0.0f, 0, 3,' ',false};
 
 struct enemigo2
 {
@@ -48,7 +49,8 @@ struct enemigo2
     int puntos;
     int vidas;
     char color[10];
-}enemigo2 = {0.0f, 0.0f, 0, 3};
+    bool enJuego;
+}enemigo2 = {0.0f, 0.0f, 0, 3,' ',false};
 
 struct enemigo3
 {
@@ -57,7 +59,8 @@ struct enemigo3
     int puntos;
     int vidas;
     char color[10];
-}enemigo3 = {0.0f, 0.0f, 0, 3};
+    bool enJuego;
+}enemigo3 = {0.0f, 0.0f, 0, 3, ' ',false};
 
 // Estructura para la calle
 struct calle
@@ -156,6 +159,18 @@ int jugar(){
     ALLEGRO_BITMAP *CarDer = al_load_bitmap("CarDer.png");
     ALLEGRO_BITMAP *meta = al_load_bitmap("meta.png");
 
+    ALLEGRO_BITMAP *CarFrontA = al_load_bitmap("CarFrenteA.png");
+    ALLEGRO_BITMAP *CarFrontB = al_load_bitmap("CarFrenteB.png");
+    ALLEGRO_BITMAP *CarFrontM = al_load_bitmap("CarFrenteM.png");
+
+    ALLEGRO_BITMAP *CarIzqA = al_load_bitmap("CarIzqA.png");
+    ALLEGRO_BITMAP *CarIzqB = al_load_bitmap("CarIzqB.png");
+    ALLEGRO_BITMAP *CarIzqM = al_load_bitmap("CarIzqM.png");
+
+    ALLEGRO_BITMAP *CarDerA = al_load_bitmap("CarDerA.png");
+    ALLEGRO_BITMAP *CarDerB = al_load_bitmap("CarDerB.png");
+    ALLEGRO_BITMAP *CarDerM = al_load_bitmap("CarDerM.png");
+
     ALLEGRO_BITMAP *newTurbo = al_load_bitmap("turbo.png");
     ALLEGRO_BITMAP *newHueco = al_load_bitmap("hueco.png");
     ALLEGRO_BITMAP *newVida = al_load_bitmap("vida.png");
@@ -188,13 +203,29 @@ int jugar(){
     pthread_create(&hilo, NULL, comenzarComunicacion, NULL);
     pthread_join(hilo, NULL); 
 
+    // Enviar nombre y color elegido por eljugador al servidor
+    char message[25] = "1-";
+    strcat(message,player);// se concatena player al final de la cadena message
+    strcat(message,"-");
+    strcat(message,pColor);
+    enviarMensaje(message); // Enviar mensaje
+
     /**
      * @brief Loop del juego
-     * 
      */
     while(!done){
-
-        enviarMensaje("1-sebas-azul");
+        // Enviar posicion de jugador---------------------------------------------------------------------
+        char message[25] = "5-";
+        strcat(message,player);// se concatena player al final de la cadena message
+        strcat(message,"-");
+        /*
+        char charValue[10]={0};
+        int number = jugador.distancia;
+        char buffer[10]={0};
+        itoa(number, buffer, 10);
+        strcat(message,charValue);
+        enviarMensaje(message); // Enviar mensaje
+        */
         // Variables para el control de los eventos en la ventana del juego
         ALLEGRO_KEYBOARD_STATE keyState;
         ALLEGRO_EVENT evt;
@@ -212,6 +243,14 @@ int jugar(){
         Turbos.distT = getNumeroT();
         Vidas.distV = getNumeroV();
         
+        // Si la distancia de jugador es mayor que 10 000, ha llegado a la meta
+        if(jugador.distancia >= 10000){
+            final = true;
+        }
+        // Si el jugador llego a la meta
+        if(final){
+            // notificar al servidor que se llego al final de la pista
+        }
 
         //Se asigna un punto cada 10 segundos jugados
         if (segundos == 10*multiploSeg){
@@ -502,9 +541,14 @@ int jugar(){
 }
 
 int main(){
-    char cadena[20]; // Aquí alojaremos el valor leído
+    // Se pide un nombre de usuario.
     printf("Escribe tu nombre:\n");
-    scanf("%s", cadena); // No usamos &
+    scanf("%s", player); 
+
+    // Se pide un color de carro
+    printf("Escribe uno de los sigueintes colores:\n -rojo\n -azul\n -blanco\n -morado\n");
+    scanf("%s", pColor); 
+
     // Al iniciar el juego, se inicia la conexion con el servidor, si la conexion falla, el juego no inicia.
     jugar();   
 
