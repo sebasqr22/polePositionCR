@@ -10,6 +10,7 @@ public class Main {
         });
         servidor = new SocketCliente();
         pantalla.setServer(servidor);
+        pantalla.iniciarColores();
         servidor.enlazarObjetos(pantalla);
     }
 }

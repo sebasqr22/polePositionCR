@@ -14,6 +14,7 @@ public class SocketCliente implements SujetoObservable {
     public void enlazarObjetos(Observador o1){observadores.add(o1);};
 
 
+
     private ServerSocket server, server1;
     private reader lector = new reader();
 
@@ -51,6 +52,7 @@ public class SocketCliente implements SujetoObservable {
     {
         observadores = new ArrayList<Observador>();
         encontrarPuerto();
+
         /*
         try {
             server = new ServerSocket(1025);
@@ -71,6 +73,8 @@ public class SocketCliente implements SujetoObservable {
             e.printStackTrace();
         }
     }
+
+
 
     public void iniciar() {
         try {

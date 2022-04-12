@@ -12,6 +12,7 @@ import java.util.Objects;
  */
 public class GUI extends javax.swing.JFrame implements Observador {
 
+
     /**
      * Creates new form GUI
      */
@@ -37,6 +38,21 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private ArregloVidas listaVidas = new ArregloVidas(1);
     private ArregloHuecos listaHuecos = new ArregloHuecos(1);
 
+    private Colores listaColores[] = new Colores[4];
+
+    private Colores azul = new Colores("azul");
+    private Colores blanco = new Colores("blanco");
+    private Colores morado = new Colores("morado");
+    private Colores rojo = new Colores("rojo");
+
+
+
+    public void iniciarColores(){
+        listaColores[0] = azul;
+        listaColores[1] = blanco;
+        listaColores[2] = morado;
+        listaColores[3] = rojo;
+    }
 
     public static SocketCliente server = new SocketCliente();
 
@@ -45,6 +61,37 @@ public class GUI extends javax.swing.JFrame implements Observador {
         server.iniciar();
     }
 
+    private boolean consultarColorLibre(String color){
+        boolean libre = false;
+        for(int i = 0; i<4; i++){
+            if(listaColores[i].getOcupado() == false && listaColores[i].getColor() == color){
+                libre = true;
+                break;
+            }
+        }
+        return  libre;
+    }
+
+    private void setColorOcupado(String color){
+        for(int i=0; i<4;i++){
+            if(listaColores[i].getColor() == color){
+                listaColores[i].setOcupado(true);
+                break;
+            }
+        }
+    }
+
+    private String consultarColorLibre(){
+        String nuevo = "NO";
+        for(int i=0; i<4; i++){
+            if(listaColores[i].getOcupado() == true){
+                nuevo = listaColores[i].getColor();
+                listaColores[i].setOcupado(true);
+                break;
+            }
+        }
+        return nuevo;
+    }
 
     private String[] quitarPartes(String total){
         total.charAt(0);
@@ -62,26 +109,31 @@ public class GUI extends javax.swing.JFrame implements Observador {
         }
     }
 
-    private void asignarJugador(String nombre, String vidas){
-        if(jugador1.getInicializado()){
-            jugador1.setInfoBasica(nombre, vidas);
+    private void asignarJugador(String nombre, String color){
+        boolean consultaColor = consultarColorLibre(color);
+        if (consultaColor == false){
+            color = consultarColorLibre();
+        }
+
+        if(jugador1.getInicializado() && color != "NO"){
+            jugador1.setInfoBasica(nombre, color);
             jugador1.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + vidas);
+            jugadoresArea.append(nombre + "---" + color);
         }
-        else if(jugador2.getInicializado()){
-            jugador2.setInfoBasica(nombre, vidas);
+        else if(jugador2.getInicializado() && color != "NO"){
+            jugador2.setInfoBasica(nombre, color);
             jugador2.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + vidas);
+            jugadoresArea.append(nombre + "---" + color);
         }
-        else if(jugador3.getInicializado()){
-            jugador3.setInfoBasica(nombre, vidas);
+        else if(jugador3.getInicializado() && color != "NO"){
+            jugador3.setInfoBasica(nombre, color);
             jugador3.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + vidas);
+            jugadoresArea.append(nombre + "---" + color);
         }
-        else if(jugador4.getInicializado()){
-            jugador4.setInfoBasica(nombre, vidas);
+        else if(jugador4.getInicializado() && color != "NO"){
+            jugador4.setInfoBasica(nombre, color);
             jugador4.setInicializado(true);
-            jugadoresArea.append(nombre + "---" + vidas);
+            jugadoresArea.append(nombre + "---" + color);
         }
         else{
             enviar("NO");
@@ -94,7 +146,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
         System.out.println("Se hace un update.....");
         llegada = server.getInfo();
 
-        if(llegada.contains("1")){ //1-Sebas-3
+        if(Character.compare(llegada.charAt(0), '1') == 0){ //1-Sebas-3
             String[] lista = quitarPartes(llegada);
             asignarJugador(lista[0], lista[1]);
         }

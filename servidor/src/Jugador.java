@@ -5,6 +5,16 @@ public class Jugador {
     private int distanciaRecorrida;
     private boolean inicializado = false;
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    private String color;
+
     public boolean getInicializado() {
         return inicializado;
     }
@@ -15,9 +25,9 @@ public class Jugador {
 
     public Jugador(){}
 
-    public void setInfoBasica(String name, String vidas){
+    public void setInfoBasica(String name, String color){
         this.name = name;
-        this.cantidadVidas = Integer.parseInt(vidas);
+        this.color = color;
     }
 
     public String getName() {
