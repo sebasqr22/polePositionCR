@@ -30,6 +30,30 @@ struct jugador
     int vidas;
 }jugador = {0.0f, 0.0f, 0, 3};
 
+struct enemigo1
+{
+    float carSpeed;
+    float distancia;
+    int puntos;
+    int vidas;
+}enemigo1 = {0.0f, 0.0f, 0, 3};
+
+struct enemigo2
+{
+    float carSpeed;
+    float distancia;
+    int puntos;
+    int vidas;
+}enemigo2 = {0.0f, 0.0f, 0, 3};
+
+struct enemigo3
+{
+    float carSpeed;
+    float distancia;
+    int puntos;
+    int vidas;
+}enemigo3 = {0.0f, 0.0f, 0, 3};
+
 struct calle
 {
     float curvatura ;
