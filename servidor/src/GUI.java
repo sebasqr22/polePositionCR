@@ -122,7 +122,6 @@ public class GUI extends javax.swing.JFrame implements Observador {
     }
 
     private String[] quitarPartes(String inicial, String total){
-        total.replaceFirst(inicial, "");
         String[] lista = total.split("-");
         return lista;
     }
@@ -149,24 +148,28 @@ public class GUI extends javax.swing.JFrame implements Observador {
             jugador1.setInfoBasica(nombre, color);
             jugador1.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador1.getDistanciaRecorrida());
         }
         else if(jugador2.getInicializado() == false && color.equals("NO") == false){
             jugador2.setInfoBasica(nombre, color);
             jugador2.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador2.getDistanciaRecorrida());
         }
         else if(jugador3.getInicializado() == false && color.equals("NO") == false){
             jugador3.setInfoBasica(nombre, color);
             jugador3.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador3.getDistanciaRecorrida());
         }
         else if(jugador4.getInicializado() == false && color.equals("NO") == false){
             jugador4.setInfoBasica(nombre, color);
             jugador4.setInicializado(true);
             jugadoresArea.append(nombre + "---" + color);
+            jugadoresArea.append("\n");
             enviar("5-" + color + "-" + jugador4.getDistanciaRecorrida());
         }
         else{
@@ -187,8 +190,8 @@ public class GUI extends javax.swing.JFrame implements Observador {
         }
         else if(Character.compare(llegada.charAt(0), '5') == 0) { //5-Sebas-3543
             String[] lista = quitarPartes("5-",llegada);
-            Jugador jugador = encontrarJugador(lista[0]);
-            jugador.sumarDistancia(Integer.parseInt(lista[1]));
+            Jugador jugador = encontrarJugador(lista[1]);
+            jugador.sumarDistancia(Integer.parseInt(lista[2]));
         }
     }
 
