@@ -23,6 +23,24 @@ double ellapsed_time;
 char player[10];
 char pColor[10];
 
+int largoNum(int num, int contador){
+    if (num == 0){
+        return contador;
+    }
+    else{
+        return largoNum(num/10, contador + 1);
+    }
+}
+
+char *int_to_string(int num, int largoNum){
+    char array[largoNum];
+    for(int i=largoNum; i<largoNum; i++){
+        array[i] = (num%10) + '0';
+        num = num / 10;
+    }
+    return array;
+}
+
 // Estructuras de los jugadores
 struct jugador
 {
