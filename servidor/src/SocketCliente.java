@@ -113,8 +113,6 @@ public class SocketCliente implements SujetoObservable {
                     cont ++;
                 }
                 System.out.println ("Mensaje Recibido: " + mensaje);
-                //llegada = lector.leer();
-                //lector.reset();
                 llegada = mensaje;
                 notificar();
             }
