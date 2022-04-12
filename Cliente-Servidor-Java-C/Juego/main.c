@@ -85,7 +85,7 @@ void tiempoTurbo(){
 }
 // Funcion determina si hay una colision entre dos objetos utilizando la funcion para la distancia entre do puntos
 bool hayColision(float xCar, float yCar, float xObject, float yObject, float rCar, float rObject){
-    if(sqrtf(powf(xCar-xObject,2)+powf(yCar-yObject,2)) <= rCar + rObject)
+    if(sqrtf(powf(xCar-xObject,2)+powf(yCar-yObject,2)) <= rCar + rObject) // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
         return true;
     else 
         return false;
@@ -347,11 +347,12 @@ int jugar(){
         ///--------------------------------------------------------------------------------------------------------
         /// Se verifican colisiones 
         ///--------------------------------------------------------------------------------------------------------
-        float radCarH = radio(38, 16, 750+posicionH, sqrtf(powf(carPos-38, 2)+powf(250-posicionH,2))); 
+        float radCarH = radio(38, 16, (250+posicionH)-500, sqrtf(powf(500 - (carPos+462), 2)+powf((250+posicionH)-500,2))); 
         printf("radCar: %f\n", radCarH);
-        float radHCar = radio(150, 58, 250-posicionH, sqrtf(powf(carPos-38, 2)+powf(250-posicionH,2)));
+        float radHCar = radio(150, 58, 500-(250+posicionH), sqrtf(powf((carPos + 462)-500, 2)+powf(500-(250+posicionH),2)));
         printf("radHueco: %f\n", radHCar);
-        if(hayColision(carPos + 462, 500, 500, 250+posicionH, radCarH, radHCar)) {
+        
+        if(hayColision(carPos + 462, 500, 500, 250+posicionH, radCarH, radHCar)) {  // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
             printf("Entra a la condicion\n");
             jugador.carSpeed -= 5.0f *ellapsed_time;
         }
@@ -370,6 +371,8 @@ int jugar(){
         /// bool hayColision(float xCar, float yCar, float xObject, float yObject, float rCar, float rObject){
         /// float radio(float a, float b,float cb, float h){
         /// sqrtf(powf(xCar-xObject,2)+powf(yCar-yObject,2))
+        /// xCar = carPos + 462       yCar = 500
+        /// xH = 500       yH = 250+posicionH
         ///--------------------------------------------------------------------------------------------------------
            
         
