@@ -63,8 +63,17 @@ public class GUI extends javax.swing.JFrame implements Observador {
 
     public static SocketCliente server = new SocketCliente();
 
-    public static void setServer(SocketCliente server) {
+    public void setServer(SocketCliente server) {
         GUI.server = server;
+        listaColores[0] = azul;
+        listaColores[1] = blanco;
+        listaColores[2] = morado;
+        listaColores[3] = rojo;
+
+        listaJugadores[0] = jugador1;
+        listaJugadores[1] = jugador2;
+        listaJugadores[2] = jugador3;
+        listaJugadores[3] = jugador4;
         server.iniciar();
     }
 

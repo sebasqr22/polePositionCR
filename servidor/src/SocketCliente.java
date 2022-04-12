@@ -35,7 +35,7 @@ public class SocketCliente implements SujetoObservable {
 
 
     ;
-    private Socket servidor, servidor1;
+    private Socket servidor;
 
 
 
@@ -48,6 +48,15 @@ public class SocketCliente implements SujetoObservable {
     /**
      * Crea el socket cliente y lee los datos
      */
+
+    @Override
+    public void notificar() {
+        for(Observador o:observadores){
+            System.out.println("NOtificando a los observadores...\n");
+            o.update();
+        }
+
+    }
     public SocketCliente()
     {
         observadores = new ArrayList<Observador>();
@@ -78,10 +87,15 @@ public class SocketCliente implements SujetoObservable {
 
     public void iniciar() {
         try {
+            /*
+            llegada = lector.leer();
+            lector.reset();
+            notificar(); */
             System.out.println("Esperando cliente en el puerto " + String.valueOf(port) + "...\n");
             servidor = server.accept();
             System.out.printf("Conectado a: " + servidor.getRemoteSocketAddress() + "\n");
             servidor.setSoLinger (true, 10);
+
             while (true){
                 // Se espera por el mensaje del cliente
                 System.out.println("Esperando mensaje del cliente....");
@@ -140,12 +154,4 @@ public class SocketCliente implements SujetoObservable {
         return this.envio;
     }
 
-    @Override
-    public void notificar() {
-        for(Observador o:observadores){
-            System.out.println("NOtificando a los observadores...\n");
-            o.update();
-        }
-
-    }
 }

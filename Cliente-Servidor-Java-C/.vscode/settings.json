@@ -1,6 +1,7 @@
 {
     "cmake.sourceDirectory": "${workspaceFolder}/Juego",
     "files.associations": {
-        "allegro_primitives.h": "c"
+        "allegro_primitives.h": "c",
+        "allegro_ttf.h": "c"
     }
 }
