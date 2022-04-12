@@ -101,7 +101,7 @@ public class GUI extends javax.swing.JFrame implements Observador {
     private Jugador encontrarJugador(String name){
         Jugador devolucion = new Jugador();
         for(int i=0; i<4; i++){
-            if(listaJugadores[i].getName() == name){
+            if(listaJugadores[i].getName().equals(name)){
                 devolucion = listaJugadores[i];
                 break;
             }
