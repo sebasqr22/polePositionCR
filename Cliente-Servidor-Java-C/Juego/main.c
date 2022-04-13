@@ -23,24 +23,6 @@ double ellapsed_time;
 char player[10];
 char pColor[10];
 
-int largoNum(int num, int contador){
-    if (num == 0){
-        return contador;
-    }
-    else{
-        return largoNum(num/10, contador + 1);
-    }
-}
-
-char *int_to_string(int num, int largoNum){
-    char array[largoNum];
-    for(int i=largoNum; i<largoNum; i++){
-        array[i] = (num%10) + '0';
-        num = num / 10;
-    }
-    return array;
-}
-
 // Estructuras de los jugadores
 struct jugador
 {
@@ -54,31 +36,31 @@ struct jugador
 struct enemigo1
 {
     float carSpeed;
-    float distancia;
+    int distancia;
     int puntos;
     char color[10];
     bool enJuego;
-}enemigo1 = {0.0f, 0.0f, 0, 3,' ',false};
+}enemigo1 = {0.0f, 0, 0, 3,' ',true};
 
 struct enemigo2
 {
     float carSpeed;
-    float distancia;
+    int distancia;
     int puntos;
     int vidas;
     char color[10];
     bool enJuego;
-}enemigo2 = {0.0f, 0.0f, 0, 3,' ',false};
+}enemigo2 = {0.0f, 0, 0, 3,' ',false};
 
 struct enemigo3
 {
     float carSpeed;
-    float distancia;
+    int distancia;
     int puntos;
     int vidas;
     char color[10];
     bool enJuego;
-}enemigo3 = {0.0f, 0.0f, 0, 3, ' ',false};
+}enemigo3 = {0.0f, 0, 0, 3, ' ',false};
 
 // Estructura para la calle
 struct calle
@@ -117,7 +99,33 @@ struct disparo
     int direccion;
 }disparo={0};
 
+void reversa(char s[])
+{
+    int i, j;
+    char c;
 
+    for (i = 0, j = strlen(s)-1; i<j; i++, j--) {
+        c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+    }
+}
+
+void itoa(int n, char s[])
+{
+    int i, sign;
+
+    if ((sign = n) < 0)
+         n = -n;        
+     i = 0;
+     do {      
+         s[i++] = n % 10 + '0';   
+     } while ((n /= 10) > 0);    
+        if (sign < 0)
+            s[i++] = '-';
+    s[i] = '\0';
+    reversa(s);
+}
 
 
 // Se inicia la comunicacion con el servidor
@@ -181,14 +189,6 @@ int jugar(){
     ALLEGRO_BITMAP *CarFrontB = al_load_bitmap("CarFrenteB.png");
     ALLEGRO_BITMAP *CarFrontM = al_load_bitmap("CarFrenteM.png");
 
-    ALLEGRO_BITMAP *CarIzqA = al_load_bitmap("CarIzqA.png");
-    ALLEGRO_BITMAP *CarIzqB = al_load_bitmap("CarIzqB.png");
-    ALLEGRO_BITMAP *CarIzqM = al_load_bitmap("CarIzqM.png");
-
-    ALLEGRO_BITMAP *CarDerA = al_load_bitmap("CarDerA.png");
-    ALLEGRO_BITMAP *CarDerB = al_load_bitmap("CarDerB.png");
-    ALLEGRO_BITMAP *CarDerM = al_load_bitmap("CarDerM.png");
-
     ALLEGRO_BITMAP *newTurbo = al_load_bitmap("turbo.png");
     ALLEGRO_BITMAP *newHueco = al_load_bitmap("hueco.png");
     ALLEGRO_BITMAP *newVida = al_load_bitmap("vida.png");
@@ -234,16 +234,14 @@ int jugar(){
     while(!done){
         // Enviar posicion de jugador---------------------------------------------------------------------
         char message[25] = "5-";
+        char result[100];
+        int a = jugador.distancia;
+        itoa(a,result);
         strcat(message,player);// se concatena player al final de la cadena message
         strcat(message,"-");
-        /*
-        char charValue[10]={0};
-        int number = jugador.distancia;
-        char buffer[10]={0};
-        itoa(number, buffer, 10);
-        strcat(message,charValue);
+        strcat(message,result);
         enviarMensaje(message); // Enviar mensaje
-        */
+
         // Variables para el control de los eventos en la ventana del juego
         ALLEGRO_KEYBOARD_STATE keyState;
         ALLEGRO_EVENT evt;
@@ -260,6 +258,21 @@ int jugar(){
         Huecos.distH = getNumeroH();
         Turbos.distT = getNumeroT();
         Vidas.distV = getNumeroV();
+
+
+        // condiciones para dibujar a los enemigos
+        if(getAzul()){
+            enemigo1.enJuego = true;
+            enemigo1.distancia = getAdist();
+        }
+        if(getMorado()){
+            enemigo2.enJuego =true;
+            enemigo2.distancia = getMdist();
+        }
+        if(getBlanco()){
+            enemigo3.enJuego = true;
+            enemigo3.distancia = getBdist();
+        }
         
         // Si la distancia de jugador es mayor que 10 000, ha llegado a la meta
         if(jugador.distancia >= 10000){
@@ -388,6 +401,20 @@ int jugar(){
         if ((jugador.distancia - Vidas.distV) > 50){
             posicionV = 0;
             Vidas.distV =0;
+        }
+
+        // si hay enemigos jugando, se muestran
+        if (enemigo1.enJuego){
+            if(500-enemigo1.distancia > 250)
+                al_draw_bitmap(CarFrontA, 377,500-enemigo1.distancia,0);
+        }
+        if (enemigo2.enJuego){
+            if(500-enemigo2.distancia > 250)
+                al_draw_bitmap(CarFrontM, 547,500-enemigo2.distancia,0);
+        }
+        if (enemigo3.enJuego){
+            if(500-enemigo3.distancia > 250)
+                al_draw_bitmap(CarFrontB, 462,450-enemigo3.distancia,0);
         }
 
         // Se dibuja el carro del jugador
@@ -550,6 +577,9 @@ int jugar(){
     al_destroy_bitmap(newVida);
     al_destroy_bitmap(horizonte);
     al_destroy_bitmap(CarFront);
+    al_destroy_bitmap(CarFrontA);
+    al_destroy_bitmap(CarFrontB);
+    al_destroy_bitmap(CarFrontM);
     al_destroy_bitmap(CarDer);
     al_destroy_bitmap(CarIzq);
     al_destroy_font(font);
